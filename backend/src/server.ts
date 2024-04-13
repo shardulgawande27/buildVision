@@ -12,6 +12,10 @@ const routes = require("@/src/routes");
 
 app.use("/api", routes);
 
+app.post("/signup", async (req, res) => {
+	
+})
+
 const server = http.createServer(app);
 const onError = (error: any) => {
 	if (error.syscall !== 'listen') throw error;
