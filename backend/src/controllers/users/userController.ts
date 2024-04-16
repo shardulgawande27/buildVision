@@ -78,7 +78,7 @@ export async function login(req: Request, res: Response){
         if(!consultant || !await bcrypt.compare(m_consultant_password, consultant.m_consultant_password)){
           return res.status(401).json({error:"Invalid email or password"});
         }
-        const key = process.env.SECRET;
+        const key : any = process.env.SECRET;
         const token = jwt.sign({userId: consultant.m_consultant_id, role:'consultant'},key, { expiresIn: '1h' })
         return res.status(200).json({ token });
         break;
