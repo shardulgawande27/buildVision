@@ -12,7 +12,7 @@ export async function up(knex: Knex): Promise<void> {
         table.text('u_user_address')
         table.string('u_email_varification_otp')
         table.string('u_mobile_varification_otp')
-        table.string('u_mobile_varification_otp_expire_time')
+        table.string('u_email_varification_otp_expire_time')
         table.string('u_mobile_varification_otp_expire_time')
         table.string('u_user_token')
         table.enum('u_is_user_verified', ['Y', 'N']).notNullable().defaultTo('N');
