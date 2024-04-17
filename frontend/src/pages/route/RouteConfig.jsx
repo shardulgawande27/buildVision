@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import Login from "../login";
-import Signup from "../signup";
+import Login from "../Login";
+import Signup from "../Signup";
 const RouteConfig = () => {
   return (
     <>

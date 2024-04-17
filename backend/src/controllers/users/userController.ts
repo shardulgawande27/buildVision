@@ -12,8 +12,10 @@ import { error } from 'console';
 import { config } from 'process';
 import moment from 'moment';
 export async function register(req: Request, res: Response) {
+  console.log(req.body)
   try {
 
+  console.log("inside try >>>>>>>>>>>>>>",req.body)
 
     const {
       u_user_role_id,
