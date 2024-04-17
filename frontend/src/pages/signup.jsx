@@ -91,7 +91,7 @@ const Signup = () => {
       <div className="bg-[#000937]">
         <div className="flex flex-col lg:flex-row">
           <div className="hidden lg:block lg:basis-1/2 px-3 lg:px-10   ">
-            <div className="bg-[#5925DC]  h-screen p-5 px-10 rounded-md overflow-hidden">
+            <div className="bg-[#5925DC] p-5 px-10 rounded-md overflow-hidden">
               <div className="Logo pt-10">
                 <div className="text-white font-bold text-2xl">Logo</div>
               </div>
@@ -135,7 +135,7 @@ const Signup = () => {
                 Create your account with us below
               </div>
               <div className="pt-2 flex items-center">
-                <div className="flex justify-center gap-2 pt-5 text-white dark:text-black text-sm text-center">
+                <div className="flex justify-center gap-2 pt-5 text-white text-sm text-center">
                   Already have an account?{" "}
                   <Link
                     to="/"
@@ -164,13 +164,19 @@ const Signup = () => {
                             ? "1px solid #7A5AF8"
                             : "1px solid #CBD5E0",
                           width: "61%",
-                          paddingTop: "10px",
-                          paddingBottom: "10px",
-                          color: "#7A5AF8 !important",
+                          paddingTop: "5px",
+                          paddingBottom: "5px",
+                          color: state.isSelected ? "#FFFFFF" : "#FFFFFF",
                         }),
                         menu: (provided) => ({
                           ...provided,
                           width: "61%",
+                          background: "#5925DC",
+                          color: "#FFFFFF",
+                        }),
+                        option: (provided) => ({
+                          ...provided,
+                          color: "#FFFFFF",
                         }),
                       }}
                     />
