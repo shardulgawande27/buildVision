@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MultiselectDropdown from "../components/MultiDropdown";
 import { Link } from "react-router-dom";
-const signup = () => {
+import Select from "react-select";
+import axios from "axios";
+
+const Signup = () => {
   const [formData, setFormData] = useState({
     role: "",
     name: "",
     email: "",
+    phoneNumber: "",
+    fName: "",
+    lName: "",
+    password: "",
+    cPassword: "",
   });
+  const [selectedRole, setSelectRole] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -18,31 +28,70 @@ const signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can handle form submission here
-    console.log(formData);
+    console.log("formData on submmit >>>>>>>>>>>>>>>", formData);
+
+    try {
+      axios
+        .post("http://localhost:5000/api/users/register", formData)
+        .then((response) => {
+          console.log("response from register >>>>>>>>>>", response);
+        })
+        .catch((error) => {
+          console.log("Error processing data>>>>>>>>>>", error);
+        });
+    } catch (error) {
+      console.error("Error submitting form data:", error.message);
+    }
   };
+
+  const handleSelect = (role) => {
+    setSelectRole(role);
+    setFormData((prevData) => ({
+      ...prevData,
+      role: role.value,
+    }));
+  };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  const selectRole = [
+    {
+      value: "Developer1",
+      label: "Developer1",
+    },
+    {
+      value: "Contractor1",
+      label: "Contractor1",
+    },
+    {
+      value: "PMC1",
+      label: "PMC1",
+    },
+  ];
 
   const selectnames = [
     {
-      value: "Web Developer",
-      label: "Web Developer",
+      value: "Developer",
+      label: "Developer",
     },
     {
-      value: "Contractor",
+      value: "Consultant",
       label: "Contractor",
     },
     {
-      value: "Business",
-      label: "Business",
+      value: "PMC",
+      label: "PMC",
     },
   ];
 
   return (
     <>
-      <div className="bg-[#000937]  h-screen">
+      <div className="bg-[#000937]">
         <div className="flex flex-col lg:flex-row">
           <div className="hidden lg:block lg:basis-1/2 px-3 lg:px-10   ">
-            <div className="bg-[#5925DC]  h-screen p-5 px-10 rounded-md overflow-hidden">
+            <div className="bg-[#5925DC] p-5 px-10 rounded-md overflow-hidden">
               <div className="Logo pt-10">
                 <div className="text-white font-bold text-2xl">Logo</div>
               </div>
@@ -86,7 +135,7 @@ const signup = () => {
                 Create your account with us below
               </div>
               <div className="pt-2 flex items-center">
-                <div className="flex justify-center gap-2 pt-5 text-white dark:text-black text-sm text-center">
+                <div className="flex justify-center gap-2 pt-5 text-white text-sm text-center">
                   Already have an account?{" "}
                   <Link
                     to="/"
@@ -102,7 +151,36 @@ const signup = () => {
                     <label className="block text-white mb-2" htmlFor="role">
                       You’re creating an account as?
                     </label>
-                    <select
+                    <Select
+                      options={selectRole}
+                      placeholder="Search skills here..."
+                      value={selectedRole}
+                      onChange={(selectedRole) => handleSelect(selectedRole)}
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          background: "transparent",
+                          border: state.isFocused
+                            ? "1px solid #7A5AF8"
+                            : "1px solid #CBD5E0",
+                          width: "61%",
+                          paddingTop: "5px",
+                          paddingBottom: "5px",
+                          color: state.isSelected ? "#FFFFFF" : "#FFFFFF",
+                        }),
+                        menu: (provided) => ({
+                          ...provided,
+                          width: "61%",
+                          background: "#5925DC",
+                          color: "#FFFFFF",
+                        }),
+                        option: (provided) => ({
+                          ...provided,
+                          color: "#FFFFFF",
+                        }),
+                      }}
+                    />
+                    {/* <select
                       className="shadow  bg-transparent border rounded w-full md:w-96 py-4 px-3 text-white placeholder-[#686677] leading-tight focus:outline-none focus:shadow-outline"
                       id="role"
                       name="role"
@@ -130,7 +208,7 @@ const signup = () => {
                       >
                         Developer
                       </option>
-                    </select>
+                    </select> */}
                   </div>
                   <div className="mb-4 lg:mb-10">
                     <label className="block text-white mb-2" htmlFor="name">
@@ -163,6 +241,91 @@ const signup = () => {
                   </div>
                   <div className="mb-4 lg:mb-10">
                     <label className="block text-white mb-2" htmlFor="email">
+                      Pnone No.
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="phone"
+                      name="phoneNumber"
+                      placeholder="Enter your mobile number"
+                      autoComplete="off"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4 lg:mb-10">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      First Name
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="fName"
+                      name="fName"
+                      placeholder="Enter your first name"
+                      autoComplete="off"
+                      value={formData.fName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4 lg:mb-10">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      Last Name
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="lName"
+                      name="lName"
+                      placeholder="Enter your last name"
+                      autoComplete="off"
+                      value={formData.lName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4 lg:mb-10">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      password
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="password"
+                      name="password"
+                      placeholder="Enter your last name"
+                      autoComplete="off"
+                      value={formData.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4 lg:mb-10">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      Confirm Password
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="cPassword"
+                      name="cPassword"
+                      placeholder="Confirm password"
+                      autoComplete="off"
+                      value={formData.cPassword}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4 lg:mb-10">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      Address
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="address"
+                      name="address"
+                      placeholder="Enter your address"
+                      autoComplete="off"
+                      value={formData.address}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="mb-4 lg:mb-10">
+                    <label className="block text-white mb-2" htmlFor="email">
                       Select your Skills
                     </label>
                     <MultiselectDropdown
@@ -190,4 +353,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;
