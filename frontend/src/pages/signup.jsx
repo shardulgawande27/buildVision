@@ -251,7 +251,7 @@ const Signup = () => {
                       className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
                       id="fName"
                       name="fName"
-                      placeholder="Enter your first name"
+                      placeholder="Enter your First Name"
                       autoComplete="off"
                       value={formData.fName}
                       onChange={handleChange}
