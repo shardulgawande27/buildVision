@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import WordsSliders from "../components/WordsSliders";
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   const words = [
     {
       id: 0,
@@ -22,9 +17,15 @@ const Login = () => {
     },
   ];
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
-      <div className="bg-[#000937] ">
+      <div className="bg-[#000937] h-screen lg:h-full">
         <div className="flex flex-col lg:flex-row">
           <div className="basis-1/2  px-10 md:px-16 lg:px-16 mt-10 lg:mt-20">
             <div>
@@ -47,7 +48,7 @@ const Login = () => {
                             Email Address
                           </div>
                           <input
-                            className="justify-center items-start p-5 mt-2 w-full text-violet-50 whitespace-nowrap rounded-md border border-solid border-slate-50 max-md:max-w-full bg-transparent"
+                            className="justify-center items-start p-2 mt-2 w-full text-violet-50 whitespace-nowrap rounded-md border border-solid border-slate-50 max-md:max-w-full bg-transparent"
                             id="email"
                             type="email"
                             placeholder="Enter your email"
@@ -60,7 +61,7 @@ const Login = () => {
                           <div className="w-full text-slate-50 max-md:max-w-full">
                             Password
                           </div>
-                          <div className="flex gap-2 justify-between self-stretch p-5 mt-2 text-base font-medium leading-6 text-violet-50 whitespace-nowrap rounded-md border border-solid border-slate-50 w-full max-md:flex-wrap">
+                          <div className="flex gap-2 justify-between self-stretch p-2 mt-2 text-base font-medium leading-6 text-violet-50 whitespace-nowrap rounded-md border border-solid border-slate-50 w-full max-md:flex-wrap">
                             <input
                               className="justify-center items-start  w-full text-violet-50 whitespace-nowrap rounded-md  max-md:max-w-full bg-transparent outline-none"
                               id="password"
@@ -109,7 +110,7 @@ const Login = () => {
                       </div>
                       <div>
                         <button
-                          className=" w-full justify-center items-center px-16 py-3.5 text-xl font-medium text-center text-white whitespace-nowrap bg-violet-500 rounded-lg  max-md:px-5"
+                          className=" w-full justify-center items-center p-3 text-xl font-medium text-center text-white whitespace-nowrap bg-violet-500 rounded-lg"
                           type="button"
                         >
                           Login
@@ -134,7 +135,7 @@ const Login = () => {
                       <div className="mt-5">
                         {" "}
                         <button
-                          className=" flex items-center justify-center gap-4 w-full bg-transparent border border-white rounded-md  text-white   font-medium py-4      px-4 focus:outline-none focus:shadow-outline focus"
+                          className=" flex items-center justify-center gap-4 w-full bg-transparent border border-white rounded-md  text-white   font-medium p-3 focus:outline-none focus:shadow-outline focus"
                           type="button"
                         >
                           Login with Google{" "}
@@ -186,24 +187,22 @@ const Login = () => {
               <img
                 src="/bglogin.png"
                 alt="Background"
-                className="w-full rounded-l-[5rem] h-full object-cover "
+                className="w-full h-screen rounded-l-[5rem] object-cover "
               />
               <div className="absolute inset-0  rounded-l-[5rem]  flex flex-col items-center justify-center">
-                <div className="flex flex-col justify-center px-12 py-16 bg-white bg-opacity-20 max-w-[556px] max-md:px-5">
-                  <div className="text-5xl font-semibold text-white leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+                <div className="flex flex-col justify-center p-12 bg-white bg-opacity-20 max-w-[556px] max-md:px-5">
+                  <div className="text-5xl font-bold text-white leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
                     Connecting Talent to Opportunities
                   </div>
-                  <div className="mt-7 text-lg text-neutral-100 max-md:max-w-full">
+                  <div className="mt-4 text-lg font-normal text-neutral-100 max-md:max-w-full">
                     Discover endless opportunities on FreelanceHu, where
                     talented freelancers and businesses unite. Jump right in
                     with us!
                   </div>
                 </div>
-
-                <div className="text-white  dark:text-black mt-32">
-                  Upload samples of your work to impress potential clients
+                <div className="mt-10">
+                  {/* <WordsSliders words={words} /> */}
                 </div>
-                <WordsSliders words={words} />
               </div>
             </div>
           </div>
