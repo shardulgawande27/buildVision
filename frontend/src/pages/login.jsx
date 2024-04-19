@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import WordsSliders from "../components/WordsSliders";
 const pmclogin = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const words = [
+    {
+      id: 0,
+      value: "Upload samples of your work to impress potential clients",
+    },
+    {
+      id: 1,
+      value: "Upload samples of your work to impress",
+    },
+    {
+      id: 2,
+      value: "Upload samples of your work to impress potential",
+    },
+  ];
 
   return (
     <>
@@ -185,9 +201,10 @@ const pmclogin = () => {
                     with us!
                   </p>
                 </div>
-                <div className="text-white  dark:text-black mt-32">
+                {/* <div className="text-white  dark:text-black mt-32">
                   Upload samples of your work to impress potential clients
-                </div>
+                </div> */}
+                <WordsSliders words={words} />
               </div>
             </div>
           </div>
