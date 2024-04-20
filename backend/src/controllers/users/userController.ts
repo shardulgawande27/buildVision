@@ -2,6 +2,7 @@ require("dotenv").config();
 import { RequestWithProfile } from '@/src/types';
 import { Request, Response } from 'express';
 import { statusType as statusCode } from "@/src/enum/statusTypes";
+import {sendEmail} from '../../helper/sendEmail'
 import jwt from 'jsonwebtoken';
 import { sendResponse } from '@/src/services/ResponseService';
 // import { loginUser, registerUser } from './userJoiModel';
@@ -39,6 +40,13 @@ export async function register(req: Request, res: Response) {
 
     // code for send email otp to user 
     // write a code for send otp 
+
+    try {
+      await sendEmail("d", "d", "d", "d")
+    } catch (error) {
+      console.log("error in send email", error)
+    }
+    
     // code for send email otp to user 
 
     const userDataToinsert = {
@@ -107,7 +115,7 @@ export async function register(req: Request, res: Response) {
   }
 }
 
-export async function login(req: Request, res: Response) {
+export async function   login(req: Request, res: Response) {
   try {
 
     const {user_email, user_password} = req.body
