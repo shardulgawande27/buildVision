@@ -88,10 +88,10 @@ const Signup = () => {
 
   return (
     <>
-      <div className="bg-[#000937]">
+      <div className="bg-[#000937] h-screen">
         <div className="flex flex-col lg:flex-row">
           <div className="hidden lg:block lg:basis-1/2 px-3 lg:px-10   ">
-            <div className="bg-[#5925DC] p-5 px-10 rounded-md overflow-hidden">
+            <div className="bg-[#5925DC] p-5 px-10 rounded-md  mt-12">
               <div className="Logo pt-10">
                 <div className="text-white font-bold text-2xl">Logo</div>
               </div>
@@ -130,7 +130,7 @@ const Signup = () => {
             </div>
           </div>
           <div className="basis-1/2 px-5 lg:px-10">
-            <div className="mt-10">
+            <div className="mt-5">
               <div className="text-white font-semibold text-[24px] lg:text-[32px] leading-[41px] ">
                 Create your account with us below
               </div>
@@ -145,41 +145,59 @@ const Signup = () => {
                   </Link>
                 </div>
               </div>
-              <div className="bg-transparent py-10 pr-5 lg:pr-12 rounded-md">
+              <div className="bg-transparent py-5  pr-5 lg:pr-12 rounded-md">
                 <form onSubmit={handleSubmit}>
-                  <div className="mb-4 lg:mb-10">
+                  <div className="mb-4">
                     <label className="block text-white mb-2" htmlFor="role">
                       You’re creating an account as?
                     </label>
                     <Select
                       options={selectRole}
-                      placeholder="Search skills here..."
+                      placeholder="Select a role"
                       value={selectedRole}
                       onChange={(selectedRole) => handleSelect(selectedRole)}
                       styles={{
                         control: (provided, state) => ({
                           ...provided,
                           background: "transparent",
-                          border: state.isFocused
-                            ? "1px solid #7A5AF8"
-                            : "1px solid #CBD5E0",
+                          border: state.isFocused ? "" : "",
                           width: "61%",
-                          paddingTop: "5px",
-                          paddingBottom: "5px",
-                          color: state.isSelected ? "#FFFFFF" : "#FFFFFF",
+                          color: "",
+                          "&:hover": {
+                            background: "",
+                          },
                         }),
                         menu: (provided) => ({
                           ...provided,
                           width: "61%",
                           background: "#5925DC",
                           color: "#FFFFFF",
+                          "&:hover": {
+                            background: "#5925DC",
+                          },
                         }),
-                        option: (provided) => ({
+                        option: (provided, state) => ({
+                          ...provided,
+
+                          background: state.isSelected ? "#5925DC" : null,
+                          "&:hover": {
+                            background: "#5925DC",
+                          },
+                        }),
+                        singleValue: (provided) => ({
                           ...provided,
                           color: "#FFFFFF",
+                          "&:hover": {
+                            background: "none",
+                          },
+                        }),
+                        placeholder: (provided) => ({
+                          ...provided,
+                          color: "#686677",
                         }),
                       }}
                     />
+
                     {/* <select
                       className="shadow  bg-transparent border rounded w-full md:w-96 py-4 px-3 text-white placeholder-[#686677] leading-tight focus:outline-none focus:shadow-outline"
                       id="role"
@@ -210,7 +228,7 @@ const Signup = () => {
                       </option>
                     </select> */}
                   </div>
-                  <div className="mb-4 lg:mb-10">
+                  {/* <div className="mb-4 lg:mb-10">
                     <label className="block text-white mb-2" htmlFor="name">
                       Full Name
                     </label>
@@ -224,55 +242,27 @@ const Signup = () => {
                       value={formData.name}
                       onChange={handleChange}
                     />
-                  </div>
-                  <div className="mb-4 lg:mb-10">
-                    <label className="block text-white mb-2" htmlFor="email">
-                      Email
-                    </label>
-                    <input
-                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
-                      id="email"
-                      name="email"
-                      placeholder="Enter your email"
-                      autoComplete="off"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="mb-4 lg:mb-10">
-                    <label className="block text-white mb-2" htmlFor="email">
-                      Pnone No.
-                    </label>
-                    <input
-                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
-                      id="phone"
-                      name="phoneNumber"
-                      placeholder="Enter your mobile number"
-                      autoComplete="off"
-                      value={formData.phoneNumber}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="mb-4 lg:mb-10">
+                  </div> */}
+                  <div className="mb-4">
                     <label className="block text-white mb-2" htmlFor="email">
                       First Name
                     </label>
                     <input
-                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
                       id="fName"
                       name="fName"
-                      placeholder="Enter your first name"
+                      placeholder="Enter your First Name"
                       autoComplete="off"
                       value={formData.fName}
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="mb-4 lg:mb-10">
+                  <div className="mb-4">
                     <label className="block text-white mb-2" htmlFor="email">
                       Last Name
                     </label>
                     <input
-                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
                       id="lName"
                       name="lName"
                       placeholder="Enter your last name"
@@ -281,12 +271,40 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="mb-4 lg:mb-10">
+                  <div className="mb-4">
                     <label className="block text-white mb-2" htmlFor="email">
-                      password
+                      Email
                     </label>
                     <input
-                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      autoComplete="off"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      Phone No.
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      id="phone"
+                      name="phoneNumber"
+                      placeholder="Enter your mobile number"
+                      autoComplete="off"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      Password
+                    </label>
+                    <input
+                      className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
                       id="password"
                       name="password"
                       placeholder="Enter your last name"
@@ -295,7 +313,17 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="mb-4 lg:mb-10">
+                  <div className="mb-4 ">
+                    <label className="block text-white mb-2" htmlFor="email">
+                      Select your Skills
+                    </label>
+                    <MultiselectDropdown
+                      options={selectnames}
+                      placeholder="Search skills here..."
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {/* <div className="mb-4">
                     <label className="block text-white mb-2" htmlFor="email">
                       Confirm Password
                     </label>
@@ -308,36 +336,25 @@ const Signup = () => {
                       value={formData.cPassword}
                       onChange={handleChange}
                     />
-                  </div>
-                  <div className="mb-4 lg:mb-10">
+                  </div> */}
+                  <div className="mb-4">
                     <label className="block text-white mb-2" htmlFor="email">
                       Address
                     </label>
                     <input
-                      className="shadow appearance-none bg-transparent border rounded w-full py-3 px-3 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none bg-transparent border rounded w-full p-2 text-white placeholder-[#686677]leading-tight focus:outline-none focus:shadow-outline"
                       id="address"
                       name="address"
-                      placeholder="Enter your address"
+                      placeholder="Enter your Address"
                       autoComplete="off"
                       value={formData.address}
                       onChange={handleChange}
                     />
                   </div>
 
-                  <div className="mb-4 lg:mb-10">
-                    <label className="block text-white mb-2" htmlFor="email">
-                      Select your Skills
-                    </label>
-                    <MultiselectDropdown
-                      options={selectnames}
-                      placeholder="Search skills here..."
-                      onChange={handleChange}
-                    />
-                  </div>
-
                   <div className="flex justify-center items-center lg:justify-start">
                     <button
-                      className=" bg-[#5925DC] text-white  p-3 px-10 font-normal rounded focus:outline-none focus:shadow-outline"
+                      className=" bg-[#5925DC] text-white  p-2 px-10 font-normal rounded focus:outline-none focus:shadow-outline"
                       type="submit"
                     >
                       Create an Account
