@@ -76,6 +76,56 @@ export async function register(req: Request, res: Response) {
   }
 }
 
+export async function resendMailOtp(req: Request, res: Response) {
+  console.log(req.body)
+  try {
+
+    console.log("inside try >>>>>>>>>>>>>>", req.body)
+
+    const {
+      user_email,
+    } = req.body
+
+    let is_user_exists = await knex('u_user').where('u_user_email', user_email)
+
+    console.log(is_user_exists, "is_user_exists >>>>>>>>>")
+
+    if (is_user_exists && is_user_exists.length == 0) {
+      return sendResponse(res, statusCode.DB_ERROR, "User Not Found", null);
+    }
+
+    const email_otp = Math.floor(100000 + Math.random() * 900000);
+    const feature_time = moment().add(5, 'minutes');
+
+
+    // code for send email otp to user 
+    // write a code for send otp 
+
+    try {
+      await sendEmail(user_email, "verify your email", `this your opt ${email_otp}`)
+
+      const response = await knex('u_user')
+      .update({
+        u_email_varification_otp: email_otp,
+      u_email_varification_otp_expire_time: feature_time.format('YYYY-MM-DD HH:mm:ss')
+      })
+      .where({ u_user_email : user_email });
+
+     sendResponse(res, statusCode.SUCCESS, "Otp Send Successfully !", null);
+    } catch (error  : any) {
+      sendResponse(res, statusCode.DB_ERROR, error.message, null);
+    }
+
+    // code for send email otp to user 
+
+   
+
+    
+  } catch (error: any) {
+    sendResponse(res, statusCode.DB_ERROR, error.message, null);
+  }
+}
+
 export async function login(req: Request, res: Response) {
   try {
 
@@ -166,3 +216,4 @@ export async function verifyUserWithOtp(req: Request, res: Response) {
     sendResponse(res, statusCode.DB_ERROR, error.message, null);
   }
 }
+

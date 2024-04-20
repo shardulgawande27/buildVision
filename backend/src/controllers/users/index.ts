@@ -1,5 +1,5 @@
 import express, { IRouter } from 'express';
-import { register , login, verifyUserWithOtp} from "./userController";
+import { register , login, verifyUserWithOtp, resendMailOtp} from "./userController";
 import authMiddleware from "@/src/middlewares/authMiddleware";
 const router: IRouter = express.Router();
 
@@ -8,6 +8,7 @@ const router: IRouter = express.Router();
 router.post("/register", register);
 router.post("/login", login );
 router.post("/verifyUserWithOtp", verifyUserWithOtp);
+router.post("/resendMailOtp", resendMailOtp);
 
 
 // login a user
