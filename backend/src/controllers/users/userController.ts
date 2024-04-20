@@ -42,7 +42,7 @@ export async function register(req: Request, res: Response) {
     // write a code for send otp 
 
     try {
-      await sendEmail("d", "d", "d", "d")
+      await sendEmail( u_user_email, "verify your email", `this your opt ${email_otp}` )
     } catch (error) {
       console.log("error in send email", error)
     }
