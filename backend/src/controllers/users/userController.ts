@@ -2,7 +2,7 @@ require("dotenv").config();
 import { RequestWithProfile } from '@/src/types';
 import { Request, Response } from 'express';
 import { statusType as statusCode } from "@/src/enum/statusTypes";
-import {sendEmail} from '../../helper/sendEmail'
+import { sendEmail } from '../../helper/sendEmail'
 import jwt from 'jsonwebtoken';
 import { sendResponse } from '@/src/services/ResponseService';
 // import { loginUser, registerUser } from './userJoiModel';
@@ -16,7 +16,7 @@ export async function register(req: Request, res: Response) {
   console.log(req.body)
   try {
 
-  console.log("inside try >>>>>>>>>>>>>>",req.body)
+    console.log("inside try >>>>>>>>>>>>>>", req.body)
 
     const {
       u_user_role_id,
@@ -42,11 +42,11 @@ export async function register(req: Request, res: Response) {
     // write a code for send otp 
 
     try {
-      await sendEmail( u_user_email, "verify your email", `this your opt ${email_otp}` )
+      await sendEmail(u_user_email, "verify your email", `this your opt ${email_otp}`)
     } catch (error) {
       console.log("error in send email", error)
     }
-    
+
     // code for send email otp to user 
 
     const userDataToinsert = {
@@ -64,99 +64,105 @@ export async function register(req: Request, res: Response) {
 
     console.log(user_added, "user_added >>>>>>>>>>>>>")
 
-    if(!user_added){
-      return sendResponse(res, statusCode.DB_ERROR, "Unable To Add User", null);
+    if (!user_added) {
+       sendResponse(res, statusCode.DB_ERROR, "Unable To Add User", null);
     }
 
-    return sendResponse(res, statusCode.SUCCESS, "User Added Successfully", null);
+     sendResponse(res, statusCode.SUCCESS, "User Added Successfully", null);
 
-    // switch(role){
-    //   case 'consultant':
-    //     const { m_consultant_name, m_consultant_address, m_consultant_username, m_consultant_password} = req.body;
-    //     console.log({ m_consultant_name, m_consultant_address, m_consultant_username, m_consultant_password}, "data >>>>>>>>>>>>>")
-    //     const hashedPassword = await bcrypt.hash(m_consultant_password, 10)
-    //     await knex('m_consultant').insert({ 
-    //       m_consultant_name, 
-    //       m_consultant_address, 
-    //       m_consultant_username, 
-    //       m_consultant_password:hashedPassword});
-    //     break;
-    //     case 'developer':
-    //       const { m_developer_name, m_developer_address, m_developer_username, m_developer_email, m_developer_password } = req.body;
-    //       const hashedDeveloperPassword = await bcrypt.hash(m_developer_password, 10);
-    //       await knex('m_developer').insert({
-    //           m_developer_name,
-    //           m_developer_username,
-    //           m_developer_email,
-    //           m_developer_address,
-    //           m_developer_password: hashedDeveloperPassword
-    //       });
-    //       break;
-    //   case 'society':
-    //       const { m_society_name, m_society_address, m_society_email, m_society_password, m_society_username } = req.body;
-    //       const hashedSocietyPassword = await bcrypt.hash(m_society_password, 10);
-    //       await knex('m_society').insert({
-    //           m_society_name,
-    //           m_society_address,
-    //           m_society_email,
-    //           m_society_password: hashedSocietyPassword,
-    //           m_society_username
-    //       });
-    //       break;
-    //   default:
-    //     return res.status(400).json({ error: 'Invalid role.' });
-
-
-    // }
-
-    // res.status(200).json({message : `${role} is saved`})
+    
   } catch (error: any) {
     sendResponse(res, statusCode.DB_ERROR, error.message, null);
   }
 }
 
-export async function   login(req: Request, res: Response) {
+export async function login(req: Request, res: Response) {
   try {
 
-    const {user_email, user_password} = req.body
+    const { user_email, user_password } = req.body
 
-    const user = await knex('u_user').where({ u_user_email :user_email })
+    const user = await knex('u_user').where({ u_user_email: user_email })
 
     console.log(user)
 
-    if(user && user.length == 0){
-      sendResponse(res, statusCode.DB_ERROR, "Invalid email", null);
+    if (user && user.length == 0) {
+     return sendResponse(res, statusCode.DB_ERROR, "Invalid email", null);
     }
 
-    const is_password_currect = bcrypt.compare(user_password, user[0].u_user_pass)
+    const is_password_currect = await bcrypt.compare(user_password, user[0].u_user_pass)
+    
+    console.log(is_password_currect, "is_password_currect >>>>>>>>>>")
 
-    if(!is_password_currect){
+    if (is_password_currect) {
+      const jwt_secret_key: any = process.env.SECRET;
+      const token = jwt.sign({ u_user_id: user[0].u_user_id, u_user_role_id: user[0].u_user_role_id }, jwt_secret_key, { expiresIn: '1h' })
+  
+      let finalDAtaToSend = {
+        token,
+        user,
+        status : true
+      }
+  
+      sendResponse(res, statusCode.SUCCESS, "User Added Successfully", finalDAtaToSend);
+    }else{
       sendResponse(res, statusCode.DB_ERROR, "Invalid password", null);
+
     }
 
-    console.log({is_password_currect})
-    const jwt_secret_key : any = process.env.SECRET;
-    const token = jwt.sign({ u_user_id: user[0].u_user_id, u_user_role_id : user[0].u_user_role_id }, jwt_secret_key, { expiresIn: '1h' })
+    console.log({ is_password_currect })
+   
 
-    return sendResponse(res, statusCode.SUCCESS, "User Added Successfully", null);
+   
+  } catch (error: any) {
+    sendResponse(res, statusCode.DB_ERROR, error.message, null);
+  }
+}
 
-    // switch (role) {
-    //   case 'consultant':
-    //     const { m_developer_email, m_consultant_password } = req.body;
-    //     const consultant = await knex('m_consultant').where({ m_developer_email }).first();
-    //     if (!consultant || !await bcrypt.compare(m_consultant_password, consultant.m_consultant_password)) {
-    //       return res.status(401).json({ error: "Invalid email or password" });
-    //     }
-    //     const key: any = process.env.SECRET;
-    //     const token = jwt.sign({ userId: consultant.m_consultant_id, role: 'consultant' }, key, { expiresIn: '1h' })
-    //     return res.status(200).json({ token });
-    //     break;
 
-    //   default:
-    //     break;
-    // }
+export async function verifyUserWithOtp(req: Request, res: Response) {
+  try {
+
+    const { user_otp, user_email } = req.body
+
+    const user = await knex('u_user').where({ u_user_email: user_email })
+
+    console.log(user)
+
+    if (user && user.length == 0) {
+      sendResponse(res, statusCode.DB_ERROR, "User Not Found", null);
+    }
+
+    if (
+      moment(user[0].u_email_varification_otp_expire_time).isBefore(
+        moment()
+      )
+    ) {
+      sendResponse(res, statusCode.DB_ERROR, "Otp IS Expired", null);
+    }
+
+    if(user[0].u_email_varification_otp == user_otp){
+
+      const response = await knex('u_user')
+      .update({
+        u_is_user_verified: 'Y',
+      })
+      .where({ u_user_email : user_email });
+
+      const jwt_secret_key: any = process.env.SECRET;
+      const token = jwt.sign({ u_user_id: user[0].u_user_id, u_user_role_id: user[0].u_user_role_id }, jwt_secret_key, { expiresIn: '1h' })
+
+      let finalDAtaToSend = {
+        token,
+        user,
+        status : true
+      }
+
+      return sendResponse(res, statusCode.SUCCESS, "User Added Successfully", finalDAtaToSend);
+    }else{
+      sendResponse(res, statusCode.DB_ERROR, "Otp is wrong", null);
+    }
 
   } catch (error: any) {
-  sendResponse(res, statusCode.DB_ERROR, error.message, null);
+    sendResponse(res, statusCode.DB_ERROR, error.message, null);
   }
 }
