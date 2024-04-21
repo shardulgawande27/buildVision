@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 import searchImg from "../assets/images/search.png";
 import projectImage from "../assets/images/project-img1.jpg";
 import plusImg from "../assets/images/plus.png";
+import api from "../api/api";
 
 const Home = () => {
+  const [projectData, setProjectData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/home");
-        console.log(response.data);
+        const response = await api.get("api/project/getproject");
+        const projectData = response.data.data;
+        console.log(projectData);
+        setProjectData(projectData);
       } catch (error) {
         console.log(error);
       }
@@ -18,6 +23,19 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:5000/api/home");
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="bg-[#17181F] flex">
@@ -101,45 +119,58 @@ const Home = () => {
 
         {/*  Project list */}
         <div className="mt-6 ml-4 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {(() => {
-            const elements = [];
-            for (let index = 0; index < 3; index++) {
-              elements.push(
-                <div key={index}>
-                  <div className="flex gap-5 justify-between py-0.5 pl-5 rounded-2xl bg-zinc-800 w-[300px] h-[47px]">
-                    <div className="flex gap-5 my-auto text-base font-medium">
-                      <div className="flex-auto my-auto text-zinc-300">
-                        DOCS UPLOAD
-                      </div>
-                      <div className="justify-center items-center text-center text-white whitespace-nowrap bg-indigo-500 rounded-xl h-[27px] w-[27px]">
-                        <p>1</p>
-                      </div>
+          {projectData.map((element) => {
+            const createdAt = new Date(element.m_project_created_at);
+            const month = createdAt.toLocaleString("default", {
+              month: "long",
+            });
+            const date = createdAt.getDate();
+            let barColor = "";
+            if (element.m_project_status === "open") {
+              barColor = "bg-indigo-600";
+            } else if (element.m_project_status === "ongoing") {
+              barColor = "bg-orange-500";
+            } else if (element.m_project_status === "done") {
+              barColor = "bg-green-600";
+            }
+
+            return (
+              <div key={element.m_project_id}>
+                <div className="flex gap-5 justify-between py-0.5 pl-5 rounded-2xl bg-zinc-800 w-[300px] h-[47px]">
+                  <div className="flex gap-5 my-auto text-base font-medium">
+                    <div className="flex-auto my-auto text-zinc-300">
+                      DOCS UPLOAD
                     </div>
-                    <div className="flex gap-3.5 items-center ">
-                      <div className="shrink-0 self-stretch w-1 bg-indigo-500 h-[35px] rounded-sm  ml-[-5px] my-auto"></div>
+                    <div className="justify-center items-center text-center text-white whitespace-nowrap bg-indigo-500 rounded-xl h-[27px] w-[27px]">
+                      <p>1</p>
                     </div>
                   </div>
-                  <div className="flex flex-col px-4 py-5 rounded-2xl bg-zinc-800 w-[300px] mt-4">
-                    <div className="flex gap-5 justify-between">
-                      <div className="shrink-0 bg-indigo-500 rounded-xl h-[23px] w-[86px]" />
-                      <div className="text-lg font-medium text-zinc-300">
-                        April 10
-                      </div>
-                    </div>
-                    <div className="mt-7 text-lg font-medium text-zinc-300">
-                      Thane Society
-                    </div>
-                    <img
-                      loading="lazy"
-                      src={projectImage}
-                      className="mt-4 w-full aspect-[1.85] rounded-xl object-cover"
-                    />
+                  <div className="flex gap-3.5 items-center ">
+                    <div className="shrink-0 self-stretch w-1 bg-indigo-500 h-[35px] rounded-sm  ml-[-5px] my-auto"></div>
                   </div>
                 </div>
-              );
-            }
-            return elements;
-          })()}
+                <div className="flex flex-col px-4 py-5 rounded-2xl bg-zinc-800 w-[300px] mt-4">
+                  <div className="flex gap-5 justify-between">
+                    <div
+                      className={`shrink-0 ${barColor} rounded-xl h-[23px] w-[86px]`}
+                    />
+                    <div className="text-lg font-medium text-zinc-300">
+                      {month} {date}
+                    </div>
+                  </div>
+                  <div className="mt-7 text-lg font-medium text-zinc-300">
+                    {element.m_project_name}
+                  </div>
+                  <img
+                    loading="lazy"
+                    src={element.m_project_image_url_1}
+                    className="mt-4 w-full aspect-[1.85] rounded-xl object-cover"
+                  />
+                </div>
+              </div>
+            );
+          })}
+
           <div>
             <div className="flex gap-5 justify-between py-0.5 pl-5 rounded-2xl bg-zinc-800 w-[300px] h-[47px]">
               <div className="flex gap-5 my-auto text-base font-medium">
@@ -245,7 +276,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex gap-3.5 items-center ">
-                <div className="shrink-0 self-stretch w-1 bg-indigo-500 h-[35px] rounded-sm  ml-[-5px] my-auto"></div>
+                <div className="shrink-0 self-stretch w-1 bg-white h-[35px] rounded-sm  ml-[-5px] my-auto"></div>
               </div>
             </div>
             <div className="flex gap-5 justify-between items-start px-4  mt-4 pt-5 pb-14 rounded-2xl bg-zinc-800 w-[300px]">
