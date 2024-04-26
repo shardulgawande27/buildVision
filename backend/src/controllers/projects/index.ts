@@ -1,9 +1,9 @@
 import express, { IRouter } from 'express';
-import { getProjects, postPorject } from './projectController';
+import { getProjects, postProject } from './projectController';
 const router: IRouter = express.Router();
 
 router.get("/getproject", getProjects );
-router.post("/postProject", postPorject)
+router.post("/postProject", postProject);
 
 
 module.exports = router;

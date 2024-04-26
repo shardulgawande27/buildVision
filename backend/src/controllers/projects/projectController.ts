@@ -6,7 +6,7 @@ import { sendResponse } from '@/src/services/ResponseService';
 import knex from '../../db';
 import moment from 'moment';
 
-export async function postPorject(req:Request, res:Response){
+export async function postProject(req:Request, res:Response){
     console.log("This is post")
     try {
         const {

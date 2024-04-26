@@ -4,6 +4,7 @@ import Login from "../Login";
 import Signup from "../Signup";
 import Home from "../Home";
 import AddProject from "../AddProject";
+import Validate from "../Validate";
 
 const RouteConfig = () => {
   return (
@@ -12,6 +13,7 @@ const RouteConfig = () => {
         <Route index element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/home" exact element={<Home />} />
+        <Route path="/validateUser" exact element={<Validate />} />
         <Route path="/addproject" exact element={<AddProject />} />
       </Routes>
     </>
