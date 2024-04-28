@@ -30,7 +30,7 @@ const Validate = () => {
   const sendData = async () =>{
     try {
         
-        const response = api.post("/api/users/verifyUserWithOtp",{user_opt:otp, user_email:})
+        // const response = api.post("/api/users/verifyUserWithOtp",{user_opt:otp, user_email:})
 
     } catch (error) {
         
