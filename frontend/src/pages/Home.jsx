@@ -4,7 +4,7 @@ import axios from "axios";
 import searchImg from "../assets/images/search.png";
 import projectImage from "../assets/images/project-img1.jpg";
 import plusImg from "../assets/images/plus.png";
-import api from "../api/api";
+import createAxiosInstance from "../api/api";
 
 const Home = () => {
   const [projectData, setProjectData] = useState([]);
@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("api/project/getproject");
+        const response = await createAxiosInstance.get("project/getproject");
         const projectData = response.data.data;
         console.log(projectData);
         setProjectData(projectData);
