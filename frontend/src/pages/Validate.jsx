@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import api from "../api/api";
 
-
 const Validate = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const refs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
@@ -27,15 +26,15 @@ const Validate = () => {
     }
   };
 
-  const sendData = async () =>{
+  const sendData = async () => {
     try {
-        
-        const response = api.post("/api/users/verifyUserWithOtp",{user_opt:otp, user_email:})
-
+      const response = api.post("/api/users/verifyUserWithOtp", {
+        user_opt: otp,
+      });
     } catch (error) {
-        
+      console.log(error, "This is the error for the otp section >>>>>>>>>>>>>");
     }
-  }
+  };
 
   return (
     <div className="bg-[#17181F] h-screen flex justify-center items-center">
