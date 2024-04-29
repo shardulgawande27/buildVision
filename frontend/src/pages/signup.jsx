@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import MultiselectDropdown from "../components/MultiDropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
+import userServices from "../api/userServices";
 import axios from "axios";
 
 const Signup = () => {
+
+  const nevigateTo = useNavigate();
+
+
+
+
+
   const [formData, setFormData] = useState({
     role: "",
     name: "",
@@ -15,6 +23,8 @@ const Signup = () => {
     password: "",
     cPassword: "",
   });
+
+  console.log(formData, "formdata >>>>>>>>>>>>>>>>>>>>>>>")
   const [selectedRole, setSelectRole] = useState(null);
 
   const handleChange = (e) => {
@@ -31,10 +41,31 @@ const Signup = () => {
     console.log("formData on submmit >>>>>>>>>>>>>>>", formData);
 
     try {
-      axios
-        .post("http://localhost:5000/api/users/register", formData)
+
+      console.log(formData, "formData")
+
+
+      let userDataToInsert = {}
+
+      userDataToInsert.u_user_role_id =  1
+      userDataToInsert.u_user_email =  formData.email
+      userDataToInsert.u_user_mobile =  formData.phoneNumber
+      userDataToInsert.u_user_pass =  formData.password
+      userDataToInsert.u_user_fist_name =  formData.fName
+      userDataToInsert.u_user_last_name =  formData.lName
+      userDataToInsert.u_user_address =  formData.address
+
+
+
+      userServices.RegisterUser(userDataToInsert)
         .then((response) => {
           console.log("response from register >>>>>>>>>>", response);
+
+          sessionStorage.setItem('user_email', formData.email)
+
+          nevigateTo('/validateUser', {
+            email : "test"
+          })
         })
         .catch((error) => {
           console.log("Error processing data>>>>>>>>>>", error);

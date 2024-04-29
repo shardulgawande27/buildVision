@@ -1,8 +1,19 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import api from "../api/api";
+import { useLocation, useNavigate } from "react-router-dom";
+import userServices from "../api/userServices";
+import { TokenService } from "../api/tokenService";
 
-const Validate = () => {
+const Validate = ({ route }) => {
+  console.log(route, "route >>>>>>>>>>>>>>>>>>>");
+
+  const navigate = useNavigate();
+
+  let user_email = sessionStorage.getItem("user_email");
+
+  console.log(user_email, "user_email >>>>>>>>>>>>>>>>>>");
+
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const refs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
 
@@ -31,6 +42,21 @@ const Validate = () => {
       const response = api.post("/api/users/verifyUserWithOtp", {
         user_opt: otp,
       });
+
+      userServices
+        .VerifyOtp({
+          user_email: user_email,
+          user_otp: otp.join(""),
+        })
+        .then((response) => {
+          console.log("response from verify Otp >>>>>>>>>>", response.data);
+
+          TokenService.saveToken(response.data.data.token);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log("Error processing data>>>>>>>>>>", error);
+        });
     } catch (error) {
       console.log(error, "This is the error for the otp section >>>>>>>>>>>>>");
     }
@@ -56,7 +82,10 @@ const Validate = () => {
           ))}
         </div>
 
-        <button className="justify-center self-end px-5 py-2  text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 m-auto">
+        <button
+          onClick={sendData}
+          className="justify-center self-end px-5 py-2  text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 m-auto"
+        >
           Submit
         </button>
       </div>

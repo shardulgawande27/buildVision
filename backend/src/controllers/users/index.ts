@@ -6,7 +6,7 @@ const router: IRouter = express.Router();
 
 // register a new user
 router.post("/register", register);
-router.post("/login", login );
+router.post("/login", login);
 router.post("/verifyUserWithOtp", verifyUserWithOtp);
 router.post("/resendMailOtp", resendMailOtp);
 
