@@ -12,7 +12,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await createAxiosInstance.get("project/getproject");
+        const instance = createAxiosInstance();
+
+        const response = await instance.get("project/getproject");
         const projectData = response.data.data;
         console.log(projectData);
         setProjectData(projectData);
