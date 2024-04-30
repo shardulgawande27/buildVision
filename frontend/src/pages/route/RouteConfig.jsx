@@ -5,6 +5,7 @@ import Signup from "../Signup";
 import Home from "../Home";
 import AddProject from "../AddProject";
 import Validate from "../Validate";
+import Task from "../Task";
 
 const RouteConfig = () => {
   return (
@@ -15,6 +16,7 @@ const RouteConfig = () => {
         <Route path="/home" exact element={<Home />} />
         <Route path="/validateUser" exact element={<Validate />} />
         <Route path="/addproject" exact element={<AddProject />} />
+        <Route path="/task" exact element={<Task />} />
       </Routes>
     </>
   );
