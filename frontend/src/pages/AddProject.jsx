@@ -118,7 +118,7 @@ const AddProject = () => {
                 <div className="max-md:max-w-full">Project Name</div>
 
                 <input
-                  className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-zinc-500 max-md:max-w-full bg-transparent"
+                  className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white max-md:max-w-full bg-transparent placeholder:text-zinc-500"
                   placeholder=" Enter the name of the project"
                   type="text"
                 />
