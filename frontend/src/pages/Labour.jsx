@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import searchImg from "../assets/images/search.png";
 import Sidebar from "../components/Sidebar";
 import line from "../assets/images/line-1.png";
 
 const Labour = () => {
+  const [selectedDate, setSelectedDate] = useState(7);
+  const [selectedMonth, setSelectedMonth] = useState("Jun");
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   return (
     <div className="bg-[#17181F] flex">
       <Sidebar />
@@ -161,20 +178,17 @@ const Labour = () => {
               <path d="M1 0L1 46L1 92" stroke="white" stroke-opacity="0.5" />
             </svg>
             <div className="month flex gap-10">
-              <div className="self-stretch my-auto">Jan</div>
-              <div className="self-stretch my-auto">Feb</div>
-              <div className="self-stretch my-auto">Mar</div>
-              <div className="self-stretch my-auto">Apr</div>
-              <div className="self-stretch my-auto">May</div>
-              <div className="justify-center items-start self-stretch px-7 py-4 my-auto bg-indigo-600 rounded-lg max-md:px-5">
-                Jun
-              </div>
-              <div className="self-stretch my-auto">Jul</div>
-              <div className="self-stretch my-auto">Aug</div>
-              <div className="self-stretch my-auto">Sep</div>
-              <div className="self-stretch my-auto">Oct</div>
-              <div className="self-stretch my-auto">Nov</div>
-              <div className="self-stretch my-auto">Dec</div>
+              {months.map((month) => (
+                <div
+                  key={month}
+                  className={`self-stretch my-auto cursor-pointer ${
+                    selectedMonth === month ? "bg-indigo-600" : ""
+                  } rounded-lg max-md:p-3 p-3`}
+                  onClick={() => setSelectedMonth(month)}
+                >
+                  {month}
+                </div>
+              ))}
             </div>
           </div>
           <div className="date flex flex-col text-center items-center">
@@ -183,12 +197,14 @@ const Labour = () => {
               src={line}
               className="self-stretch w-full  max-md:max-w-full"
             />
-            <div className=" my-4 text-2xl max-md:max-w-full flex gap-5 items-center">
+            <div className="my-4 text-2xl max-md:max-w-full flex gap-5 items-center">
               {[...Array(30).keys()].map((num) => (
                 <button
                   key={num}
-                  className="py-1 rounded"
-                  onClick={() => console.log(num + 1)}
+                  className={`py-1 rounded cursor-pointer ${
+                    selectedDate === num + 1 ? "bg-indigo-600 p-4" : ""
+                  }`}
+                  onClick={() => setSelectedDate(num + 1)}
                 >
                   {num + 1}
                 </button>
