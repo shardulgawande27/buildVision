@@ -6,6 +6,7 @@ import Home from "../Home";
 import AddProject from "../AddProject";
 import Validate from "../Validate";
 import Task from "../Task";
+import Labour from "../Labour";
 
 const RouteConfig = () => {
   return (
@@ -17,6 +18,7 @@ const RouteConfig = () => {
         <Route path="/validateUser" exact element={<Validate />} />
         <Route path="/addproject" exact element={<AddProject />} />
         <Route path="/task" exact element={<Task />} />
+        <Route path="/labourdetails" exact element={<Labour />} />
       </Routes>
     </>
   );
