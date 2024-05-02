@@ -84,10 +84,12 @@ export async function markAttendance(req: Request, res: Response) {
     const formatted_amount: string = amount_paid.toFixed(2);
     console.log("Formatted amount paid:", formatted_amount);
 
-    const attendanceUpdate = await knex("m_labour_attendance")
-      .update({ attendance_status, amount_paid: formatted_amount })
-      .where("l_id", labourId);
-    console.log("updated attendance >>>>>>>>>>>>>>>>>", attendanceUpdate);
+    const attendanceUpdate = await knex("m_labour_attendance").insert({
+      attendance_status,
+      amount_paid: formatted_amount,
+      labour_id: labourId,
+    });
+    console.log("inserted attendance >>>>>>>>>>>>>>>>>", attendanceUpdate);
   } catch (error) {
     console.log("Error in getting labour data", error);
   }
