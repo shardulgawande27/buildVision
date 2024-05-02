@@ -52,16 +52,42 @@ export async function getLabourData(req: Request, res: Response) {
 export async function markAttendance(req: Request, res: Response) {
   console.log("This is the attendance route");
   try {
-    const labourId = req.params;
+    const labourId = req.params.Id;
     const attendance_data = req.body;
-    console.log("This is params and body", { labourId, attendance_data });
-    const laborWithAttendance = await knex("m_labour")
-      .select("m_labour", "l_id", "l_name", "l_wage")
-      .leftJoin("m_labour_attendance", "labour_id", "attendance_status")
-      .where("m_labour.l_id", labourId)
-      .orderBy("m_labour_attendance", "desc");
+    console.log("This is params and body", {
+      labourId,
+      attendance_data,
+    });
+    const labourWithAttendance = await knex("m_labour")
+      .select("l_wage")
+      .where("l_id", labourId)
+      .first();
+    console.log("this is the record", labourWithAttendance.l_wage);
+    const labour_wage = labourWithAttendance.l_wage;
+    const attendance_status = req.body.attendance_status;
+    console.log("this is the attendance status>>>>>>>....", attendance_status);
+    let amount_paid: number = 0;
+    if (attendance_status == "present") {
+      console.log("labur is present");
+      amount_paid = labour_wage * 1;
+      console.log("this is amount to paid when present", amount_paid);
+    } else if (attendance_status == "absent") {
+      console.log("labur is absent");
+      amount_paid = labour_wage * 0;
+      console.log("this is amount to paid when absent", amount_paid);
+    } else if (attendance_status == "half_day") {
+      console.log("labur is on half_day");
+      amount_paid = labour_wage * 0.5;
+      console.log("this is amount to paid when on half_day", amount_paid);
+    }
+    amount_paid = parseFloat(amount_paid.toFixed(2));
+    const formatted_amount: string = amount_paid.toFixed(2);
+    console.log("Formatted amount paid:", formatted_amount);
 
-    console.log(laborWithAttendance);
+    const attendanceUpdate = await knex("m_labour_attendance")
+      .update({ attendance_status, amount_paid: formatted_amount })
+      .where("l_id", labourId);
+    console.log("updated attendance >>>>>>>>>>>>>>>>>", attendanceUpdate);
   } catch (error) {
     console.log("Error in getting labour data", error);
   }
