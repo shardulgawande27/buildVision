@@ -140,7 +140,7 @@ const Labour = () => {
         </div>
         {/* date */}
         <div className="flex flex-col items-center px-5 mt-10 font-medium text-white">
-          <div className="flex gap-5 items-center w-full text-2xl whitespace-nowrap max-w-[1509px] max-md:flex-wrap max-md:max-w-full">
+          <div className="flex gap-5 items-center  text-2xl whitespace-nowrap w-[100%] max-md:flex-wrap max-md:max-w-full">
             <div className=" self-stretch my-auto text-3xl">2020</div>
             <div className="flex">
               <svg
@@ -177,7 +177,7 @@ const Labour = () => {
             >
               <path d="M1 0L1 46L1 92" stroke="white" stroke-opacity="0.5" />
             </svg>
-            <div className="month flex gap-10">
+            <div className="month flex gap-5">
               {months.map((month) => (
                 <div
                   key={month}
@@ -197,7 +197,7 @@ const Labour = () => {
               src={line}
               className="self-stretch w-full  max-md:max-w-full"
             />
-            <div className="my-4 text-2xl max-md:max-w-full flex gap-5 items-center">
+            <div className="my-4 text-2xl max-md:max-w-full flex gap-5 items-center mr-auto">
               {[...Array(30).keys()].map((num) => (
                 <button
                   key={num}
@@ -216,6 +216,194 @@ const Labour = () => {
               src={line}
               className="self-stretch w-full  max-md:max-w-full"
             />
+          </div>
+        </div>
+        {/* labour data */}
+        <div className="labour-details grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6">
+          <div className="flex flex-col px-2.5 pt-2.5 pb-5 rounded-xl bg-neutral-900 w-[299px]">
+            <div className="flex gap-5 justify-between w-full text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex gap-3.5 justify-center">
+                <div className="shrink-0 my-auto bg-green-600 h-[21px] rounded-[100px] w-[5px]" />
+                <div>Skilled</div>
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/48409c107d2386ccf05858feb382db444ba04286d7a43b5570130d34cf69496e?"
+                className="shrink-0 my-auto w-5 aspect-square"
+              />
+            </div>
+            <div className="flex gap-5 justify-between p-4 mt-3 rounded-xl border border-solid bg-zinc-900 border-neutral-800">
+              <div className="flex flex-col text-white leading-[150%]">
+                <div className="text-lg">ABC </div>
+                <div className="mt-4 text-xs">₹100/day</div>
+              </div>
+              <div className="flex flex-col self-start">
+                <div className="text-xs leading-5 text-white">Total amount</div>
+                <div className="mt-3 text-2xl font-medium text-white">
+                  ₹ 100
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 mt-5 text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 bg-green-600 rounded-lg cursor-pointer">
+                <p>P</p>
+              </div>
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>A</p>
+              </div>
+
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>H</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col px-2.5 pt-2.5 pb-5 rounded-xl bg-neutral-900 w-[299px]">
+            <div className="flex gap-5 justify-between w-full text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex gap-3.5 justify-center">
+                <div className="shrink-0 my-auto bg-red-500 h-[21px] rounded-[100px] w-[5px]" />
+                <div>Skilled</div>
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/48409c107d2386ccf05858feb382db444ba04286d7a43b5570130d34cf69496e?"
+                className="shrink-0 my-auto w-5 aspect-square"
+              />
+            </div>
+            <div className="flex gap-5 justify-between p-4 mt-3 rounded-xl border border-solid bg-zinc-900 border-neutral-800">
+              <div className="flex flex-col text-white leading-[150%]">
+                <div className="text-lg">ABC </div>
+                <div className="mt-4 text-xs">₹100/day</div>
+              </div>
+              <div className="flex flex-col self-start">
+                <div className="text-xs leading-5 text-white">Total amount</div>
+                <div className="mt-3 text-2xl font-medium text-white">
+                  ₹ 100
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 mt-5 text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>P</p>
+              </div>
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 bg-red-500 border-opacity-90 rounded-lg cursor-pointer">
+                <p>A</p>
+              </div>
+
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>H</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col px-2.5 pt-2.5 pb-5 rounded-xl bg-neutral-900 w-[299px]">
+            <div className="flex gap-5 justify-between w-full text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex gap-3.5 justify-center">
+                <div className="shrink-0 my-auto bg-orange-500 h-[21px] rounded-[100px] w-[5px]" />
+                <div>Skilled</div>
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/48409c107d2386ccf05858feb382db444ba04286d7a43b5570130d34cf69496e?"
+                className="shrink-0 my-auto w-5 aspect-square"
+              />
+            </div>
+            <div className="flex gap-5 justify-between p-4 mt-3 rounded-xl border border-solid bg-zinc-900 border-neutral-800">
+              <div className="flex flex-col text-white leading-[150%]">
+                <div className="text-lg">ABC </div>
+                <div className="mt-4 text-xs">₹100/day</div>
+              </div>
+              <div className="flex flex-col self-start">
+                <div className="text-xs leading-5 text-white">Total amount</div>
+                <div className="mt-3 text-2xl font-medium text-white">
+                  ₹ 100
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 mt-5 text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>P</p>
+              </div>
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>A</p>
+              </div>
+
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 bg-orange-500 border-opacity-90 rounded-lg cursor-pointer">
+                <p>H</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col px-2.5 pt-2.5 pb-5 rounded-xl bg-neutral-900 w-[299px]">
+            <div className="flex gap-5 justify-between w-full text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex gap-3.5 justify-center">
+                <div className="shrink-0 my-auto bg-orange-500 h-[21px] rounded-[100px] w-[5px]" />
+                <div>Skilled</div>
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/48409c107d2386ccf05858feb382db444ba04286d7a43b5570130d34cf69496e?"
+                className="shrink-0 my-auto w-5 aspect-square"
+              />
+            </div>
+            <div className="flex gap-5 justify-between p-4 mt-3 rounded-xl border border-solid bg-zinc-900 border-neutral-800">
+              <div className="flex flex-col text-white leading-[150%]">
+                <div className="text-lg">ABC </div>
+                <div className="mt-4 text-xs">₹100/day</div>
+              </div>
+              <div className="flex flex-col self-start">
+                <div className="text-xs leading-5 text-white">Total amount</div>
+                <div className="mt-3 text-2xl font-medium text-white">
+                  ₹ 100
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 mt-5 text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>P</p>
+              </div>
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>A</p>
+              </div>
+
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 bg-orange-500 border-opacity-90 rounded-lg cursor-pointer">
+                <p>H</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col px-2.5 pt-2.5 pb-5 rounded-xl bg-neutral-900 w-[299px]">
+            <div className="flex gap-5 justify-between w-full text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex gap-3.5 justify-center">
+                <div className="shrink-0 my-auto bg-green-600 h-[21px] rounded-[100px] w-[5px]" />
+                <div>Skilled</div>
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/48409c107d2386ccf05858feb382db444ba04286d7a43b5570130d34cf69496e?"
+                className="shrink-0 my-auto w-5 aspect-square"
+              />
+            </div>
+            <div className="flex gap-5 justify-between p-4 mt-3 rounded-xl border border-solid bg-zinc-900 border-neutral-800">
+              <div className="flex flex-col text-white leading-[150%]">
+                <div className="text-lg">ABC </div>
+                <div className="mt-4 text-xs">₹100/day</div>
+              </div>
+              <div className="flex flex-col self-start">
+                <div className="text-xs leading-5 text-white">Total amount</div>
+                <div className="mt-3 text-2xl font-medium text-white">
+                  ₹ 100
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 mt-5 text-lg leading-7 text-white whitespace-nowrap">
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 bg-green-600 rounded-lg cursor-pointer">
+                <p>P</p>
+              </div>
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>A</p>
+              </div>
+
+              <div className="flex justify-center items-center px-3.5 w-10 h-10 border border-solid border-white border-opacity-90 rounded-lg cursor-pointer">
+                <p>H</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

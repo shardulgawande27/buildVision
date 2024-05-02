@@ -48,3 +48,21 @@ export async function getLabourData(req: Request, res: Response) {
     console.log("Error in getting labour data", error);
   }
 }
+
+export async function markAttendance(req: Request, res: Response) {
+  console.log("This is the attendance route");
+  try {
+    const labourId = req.params;
+    const attendance_data = req.body;
+    console.log("This is params and body", { labourId, attendance_data });
+    const laborWithAttendance = await knex("m_labour")
+      .select("m_labour", "l_id", "l_name", "l_wage")
+      .leftJoin("m_labour_attendance", "labour_id", "attendance_status")
+      .where("m_labour.l_id", labourId)
+      .orderBy("m_labour_attendance", "desc");
+
+    console.log(laborWithAttendance);
+  } catch (error) {
+    console.log("Error in getting labour data", error);
+  }
+}

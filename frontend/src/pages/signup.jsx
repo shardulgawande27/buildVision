@@ -6,12 +6,7 @@ import userServices from "../api/userServices";
 import axios from "axios";
 
 const Signup = () => {
-
   const nevigateTo = useNavigate();
-
-
-
-
 
   const [formData, setFormData] = useState({
     role: "",
@@ -24,7 +19,7 @@ const Signup = () => {
     cPassword: "",
   });
 
-  console.log(formData, "formdata >>>>>>>>>>>>>>>>>>>>>>>")
+  console.log(formData, "formdata >>>>>>>>>>>>>>>>>>>>>>>");
   const [selectedRole, setSelectRole] = useState(null);
 
   const handleChange = (e) => {
@@ -41,31 +36,28 @@ const Signup = () => {
     console.log("formData on submmit >>>>>>>>>>>>>>>", formData);
 
     try {
+      console.log(formData, "formData");
 
-      console.log(formData, "formData")
+      let userDataToInsert = {};
 
+      userDataToInsert.u_user_role_id = 1;
+      userDataToInsert.u_user_email = formData.email;
+      userDataToInsert.u_user_mobile = formData.phoneNumber;
+      userDataToInsert.u_user_pass = formData.password;
+      userDataToInsert.u_user_fist_name = formData.fName;
+      userDataToInsert.u_user_last_name = formData.lName;
+      userDataToInsert.u_user_address = formData.address;
 
-      let userDataToInsert = {}
-
-      userDataToInsert.u_user_role_id =  1
-      userDataToInsert.u_user_email =  formData.email
-      userDataToInsert.u_user_mobile =  formData.phoneNumber
-      userDataToInsert.u_user_pass =  formData.password
-      userDataToInsert.u_user_fist_name =  formData.fName
-      userDataToInsert.u_user_last_name =  formData.lName
-      userDataToInsert.u_user_address =  formData.address
-
-
-
-      userServices.RegisterUser(userDataToInsert)
+      userServices
+        .RegisterUser(userDataToInsert)
         .then((response) => {
           console.log("response from register >>>>>>>>>>", response);
 
-          sessionStorage.setItem('user_email', formData.email)
+          sessionStorage.setItem("user_email", formData.email);
 
-          nevigateTo('/validateUser', {
-            email : "test"
-          })
+          nevigateTo("/validateUser", {
+            email: "test",
+          });
         })
         .catch((error) => {
           console.log("Error processing data>>>>>>>>>>", error);
