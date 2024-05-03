@@ -27,6 +27,7 @@ const Signup = () => {
   console.log(formData, "formdata >>>>>>>>>>>>>>>>>>>>>>>");
   const [selectedRole, setSelectRole] = useState(null);
   const [signUpErrorMassege, setSignUpErrorMassege] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +40,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     console.log("formData on submmit >>>>>>>>>>>>>>>", formData);
 
     try {
@@ -68,6 +70,9 @@ const Signup = () => {
         .catch((error) => {
           console.log("Error processing data>>>d>>>>>>>", error);
           notify(error.response.data.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     } catch (error) {
       console.error("Error submitting form data:", error.message);
@@ -388,9 +393,7 @@ const Signup = () => {
                       className=" bg-[#5925DC] text-white  p-2 px-10 font-normal rounded focus:outline-none focus:shadow-outline flex gap-5"
                       type="submit"
                     >
-                      <span>
-                        <Loader />
-                      </span>
+                      <span>{isLoading && <Loader />}</span>
                       Create an Account
                     </button>
                   </div>
