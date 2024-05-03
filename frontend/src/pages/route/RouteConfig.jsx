@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import Login from "../login";
-import Signup from "../signup";
+import Login from "../Login";
+import Signup from "../Signup";
 import Home from "../Home";
 import AddProject from "../AddProject";
 import Validate from "../Validate";
 import Task from "../Task";
 import Labour from "../Labour";
+import Loader from "../../components/Loader";
 
 const RouteConfig = () => {
   return (
@@ -19,6 +20,7 @@ const RouteConfig = () => {
         <Route path="/addproject" exact element={<AddProject />} />
         <Route path="/task" exact element={<Task />} />
         <Route path="/labourdetails" exact element={<Labour />} />
+        <Route path="/loader" exact element={<Loader />} />
       </Routes>
     </>
   );
