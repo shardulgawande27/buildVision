@@ -39,9 +39,8 @@ const Validate = ({ route }) => {
 
   const sendData = async () => {
     try {
-      const response = api.post("/api/users/verifyUserWithOtp", {
-        user_opt: otp,
-      });
+
+     
 
       userServices
         .VerifyOtp({
@@ -83,7 +82,7 @@ const Validate = ({ route }) => {
         </div>
 
         <button
-          onClick={sendData}
+          onClick={()=>sendData()}
           className="justify-center self-end px-5 py-2  text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 m-auto"
         >
           Submit
