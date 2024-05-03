@@ -4,12 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import userServices from "../api/userServices";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loader from "../components/Loader";
 
 const Signup = () => {
   const nevigateTo = useNavigate();
- 
+
   const notify = (massege) => toast(massege);
 
   const [formData, setFormData] = useState({
@@ -59,7 +60,6 @@ const Signup = () => {
           console.log("response from register >>>>>>>>>>", response);
 
           sessionStorage.setItem("user_email", formData.email);
-          
 
           nevigateTo("/validateUser", {
             email: "test",
@@ -67,7 +67,7 @@ const Signup = () => {
         })
         .catch((error) => {
           console.log("Error processing data>>>d>>>>>>>", error);
-          notify(error.response.data.message)
+          notify(error.response.data.message);
         });
     } catch (error) {
       console.error("Error submitting form data:", error.message);
@@ -119,7 +119,7 @@ const Signup = () => {
   return (
     <>
       <div className="bg-[#000937] h-screen">
-      <ToastContainer />
+        <ToastContainer />
         <div className="flex flex-col lg:flex-row">
           <div className="hidden lg:block lg:basis-1/2 px-3 lg:px-10   ">
             <div className="bg-[#5925DC] p-5 px-10 rounded-md  mt-12">
@@ -385,9 +385,12 @@ const Signup = () => {
 
                   <div className="flex justify-center items-center lg:justify-start">
                     <button
-                      className=" bg-[#5925DC] text-white  p-2 px-10 font-normal rounded focus:outline-none focus:shadow-outline"
+                      className=" bg-[#5925DC] text-white  p-2 px-10 font-normal rounded focus:outline-none focus:shadow-outline flex gap-5"
                       type="submit"
                     >
+                      <span>
+                        <Loader />
+                      </span>
                       Create an Account
                     </button>
                   </div>

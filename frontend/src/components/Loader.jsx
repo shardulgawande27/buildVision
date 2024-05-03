@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 const Loader = () => {
-  return <div className="loader"></div>;
+  return <div id="button-loader"></div>;
 };
 
 export default Loader;
