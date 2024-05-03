@@ -5,8 +5,10 @@ import searchImg from "../assets/images/search.png";
 import projectImage from "../assets/images/project-img1.jpg";
 import plusImg from "../assets/images/plus.png";
 import createAxiosInstance from "../api/api";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const nevigateTo = useNavigate();
   const [projectData, setProjectData] = useState([]);
 
   useEffect(() => {
@@ -281,7 +283,12 @@ const Home = () => {
                 <div className="shrink-0 self-stretch w-1 bg-white h-[35px] rounded-sm  ml-[-5px] my-auto"></div>
               </div>
             </div>
-            <div className="flex gap-5 justify-between items-start px-4  mt-4 pt-5 pb-14 rounded-2xl bg-zinc-800 w-[300px]">
+            <div
+              className="flex gap-5 justify-between items-start px-4  mt-4 pt-5 pb-14 rounded-2xl bg-zinc-800 w-[300px] cursor-pointer"
+              onClick={() => {
+                nevigateTo("/addproject");
+              }}
+            >
               <div className="flex flex-col w-full">
                 <div className="flex justify-between">
                   <div className="shrink-0 bg-white rounded-xl h-[23px] w-[86px]" />
