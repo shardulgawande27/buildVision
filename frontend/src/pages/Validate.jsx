@@ -51,7 +51,7 @@ const Validate = ({ route }) => {
           console.log("response from verify Otp >>>>>>>>>>", response.data);
 
           TokenService.saveToken(response.data.data.token);
-          navigate("/");
+          navigate("/home");
         })
         .catch((error) => {
           console.log("Error processing data>>>>>>>>>>", error);
