@@ -123,7 +123,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="bg-[#000937] h-screen">
+      <div className="bg-[#000937]">
         <ToastContainer />
         <div className="flex flex-col lg:flex-row">
           <div className="hidden lg:block lg:basis-1/2 px-3 lg:px-10   ">
