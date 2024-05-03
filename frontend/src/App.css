@@ -13,3 +13,7 @@ body {
 .np-custom{
   margin-top: 4rem;
 }
+
+.btn-label{
+  display: flex !important;
+}
