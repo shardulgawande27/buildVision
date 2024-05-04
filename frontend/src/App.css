@@ -75,3 +75,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.profile-custom {
+    border-radius: 100%;
+}
