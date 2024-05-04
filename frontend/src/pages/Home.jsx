@@ -12,6 +12,11 @@ const Home = () => {
   const [projectData, setProjectData] = useState([]);
 
   useEffect(() => {
+
+    if (!localStorage.getItem("token")) {
+      nevigateTo('/')
+    }
+
     const fetchData = async () => {
       try {
         const instance = createAxiosInstance();

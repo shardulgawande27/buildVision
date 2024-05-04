@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router";
+import {  BrowserRouter as Router, Navigate } from "react-router-dom";
 import Login from "../login";
 import Signup from "../signup";
 import Home from "../Home";
@@ -13,7 +14,9 @@ const RouteConfig = () => {
   return (
     <>
       <Routes>
-        <Route index element={<Login />} />
+      <Route path="/" element={localStorage.getItem("token")  ? <Navigate to="/home" /> :  <Login />}/>
+
+        {/* <Route index element={<Login />} /> */}
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/home" exact element={<Home />} />
         <Route path="/validateUser" exact element={<Validate />} />
