@@ -4,11 +4,16 @@ import api from "../api/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import userServices from "../api/userServices";
 import { TokenService } from "../api/tokenService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Validate = ({ route }) => {
   console.log(route, "route >>>>>>>>>>>>>>>>>>>");
 
   const navigate = useNavigate();
+
+  const notify = (massege) => toast(massege);
+
 
   let user_email = sessionStorage.getItem("user_email");
 
@@ -55,6 +60,8 @@ const Validate = ({ route }) => {
         })
         .catch((error) => {
           console.log("Error processing data>>>>>>>>>>", error);
+
+          notify(error.response.data.message)
         });
     } catch (error) {
       console.log(error, "This is the error for the otp section >>>>>>>>>>>>>");
@@ -62,6 +69,8 @@ const Validate = ({ route }) => {
   };
 
   return (
+    <>
+      <ToastContainer />
     <div className="bg-[#17181F] h-screen flex justify-center items-center">
       <div className="border border-solid border-slate-50 rounded-lg w-[25%] text-white py-10 m-auto flex flex-col gap-8">
         <p className="m-auto">OTP is send to your provided email</p>
@@ -89,6 +98,7 @@ const Validate = ({ route }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

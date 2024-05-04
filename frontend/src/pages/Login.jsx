@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import WordsSliders from "../components/WordsSliders";
 import userServices from "../api/userServices";
-import "react-toastify/dist/ReactToastify.css";
 import Loader from "../components/Loader";
 import { TokenService } from "../api/tokenService";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Login = () => {
@@ -50,7 +50,7 @@ const Login = () => {
         navigate('/home')
       }
     }).catch((err)=>{
-      console.log(err, "err >>>>>>>>>>>>>>>>>>>>>>>>>")
+        notify(err.response.data.message)
     })
   }
 
