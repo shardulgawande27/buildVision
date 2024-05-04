@@ -1,7 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import WordsSliders from "../components/WordsSliders";
+import userServices from "../api/userServices";
+import "react-toastify/dist/ReactToastify.css";
+import Loader from "../components/Loader";
+import { TokenService } from "../api/tokenService";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
+
 const Login = () => {
+  const navigate = useNavigate();
+  const notify = (massege) => toast(massege);
+
+  const [email, setEmail] = useState(null)
+  const [pass, setPass] = useState(null)
+
+
   const words = [
     {
       id: 0,
@@ -23,8 +38,25 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const Login = () =>{
+    userServices.UserLogin({
+      user_email :  email,
+      user_password : pass
+    }).then((res)=>{
+      console.log(res.data, "res >>>>>>>>>>>>>>>>>>>>>>")
+      if(res.data.data.status){
+        notify("you are logged in")
+        TokenService.saveToken(res.data.data.token);
+        navigate('/home')
+      }
+    }).catch((err)=>{
+      console.log(err, "err >>>>>>>>>>>>>>>>>>>>>>>>>")
+    })
+  }
+
   return (
     <>
+     <ToastContainer />
       <div className="bg-[#000937] h-screen lg:h-full">
         <div className="flex flex-col lg:flex-row">
           <div className="basis-1/2  px-10 md:px-16 lg:px-16 mt-10 lg:mt-20">
@@ -53,6 +85,7 @@ const Login = () => {
                             type="email"
                             placeholder="Enter your email"
                             autoComplete="off"
+                            onChange={(e)=>setEmail(e.target.value)}
                           />
                         </div>
                       </div>
@@ -68,6 +101,7 @@ const Login = () => {
                               type={showPassword ? "text" : "password"}
                               placeholder="Enter your password"
                               autoComplete="off"
+                              onChange={(e)=>setPass(e.target.value)}
                             />
 
                             <svg
@@ -112,6 +146,7 @@ const Login = () => {
                         <button
                           className=" w-full justify-center items-center p-3 text-xl font-medium text-center text-white whitespace-nowrap bg-violet-500 rounded-lg"
                           type="button"
+                          onClick={()=>Login()}
                         >
                           Login
                         </button>

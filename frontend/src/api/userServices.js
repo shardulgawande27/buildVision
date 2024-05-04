@@ -8,5 +8,14 @@ export default {
     VerifyOtp(payload) {
         console.log(payload)
         return Api().post(`/users/verifyUserWithOtp`, payload);
+    },
+    VerifyOtp(payload) {
+        console.log(payload)
+        return Api().post(`/users/verifyUserWithOtp`, payload);
+    },
+    UserLogin(payload) {
+        console.log(payload)
+        return Api().post(`/users/login`, payload);
     }
+
 };
