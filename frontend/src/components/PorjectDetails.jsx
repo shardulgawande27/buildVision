@@ -107,7 +107,7 @@ const PorjectDetails = ({ formData, setFormData }) => {
                 type="text"
               />
             </div>
-            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer w-[25%] ml-[75%] mt-6">
+            <div className="flex justify-center text-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer w-[21%] ml-[79%] mt-6">
               <label
                 htmlFor="upload-input"
                 className="flex items-center cursor-pointer w-[135px]"
@@ -132,7 +132,7 @@ const PorjectDetails = ({ formData, setFormData }) => {
                     fill="#151515"
                   />
                 </svg>
-                <span>add image(s)</span>
+                <span>add Section</span>
               </label>
               <input
                 id="upload-input"
