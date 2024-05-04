@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import Form from "../components/Form";
 import AreaForm from "../components/AreaForm";
 import uploadService from "../api/uploadService";
+import Header from "../components/Header";
 
 const AddProject = () => {
   const [btnActive, setBtnActive] = useState(0);
@@ -35,19 +36,9 @@ const AddProject = () => {
   return (
     <div className="bg-[#17181F] flex">
       <Sidebar />
-      <div className="home-main">
-        {/* search section */}
-        <div className="bg-transparent flex w-[500px] rounded-3xl border-[#4A4B52] border-[1px] items-center px-7 mt-5 ml-5">
-          <input
-            className="flex gap-5  py-2.5 text-sm font-medium  border-[#4A4B52] text-[#4A4B52] max-md:flex-wrap max-md:px-5 bg-transparent w-full outline-none placeholder-[font-thin]::placeholder"
-            type="text"
-            placeholder="Search task, project"
-          />
-
-          <a href="">
-            <img src={searchImg} alt="" />
-          </a>
-        </div>
+      <div className="home-main w-[100%]">
+        {/* search and profile section */}
+        <Header />
 
         {/* name and project details */}
         <div className=" gap-2.5 justify-between items-end px-5 max-md:flex-wrap np-custom">
