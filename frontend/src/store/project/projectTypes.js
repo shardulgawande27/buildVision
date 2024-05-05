@@ -1,1 +1,2 @@
 export const FETCH_PROJECT = "FETCH_PROJECT";
+export const PROJECT_FORM_STEPS = "PROJECT_FORM_STEPS";
