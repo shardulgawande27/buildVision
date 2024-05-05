@@ -10,8 +10,12 @@ const Form = () => {
   const [page, setPage] = useState(1);
   const [formData, setFormData] = useState({
     projectName: "",
-    projectDescription: "",
-    projectArea: "",
+    ctsNo: "",
+    totalMember: "",
+    roomType: "",
+    numberOfSociety: "",
+    squareM: "",
+    federation: "Y",
     chairmanName: "",
     chairmanMobile: "",
     secretaryName: "",

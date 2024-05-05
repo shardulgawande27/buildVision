@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
 
 const PorjectDetails = ({ formData, setFormData }) => {
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   return (
     <div className="flex gap-5 max-md:flex-col max-md:gap-0 mt-4">
       <div className="flex  w-[100%] max-md:ml-0 max-md:w-full">
@@ -24,6 +28,10 @@ const PorjectDetails = ({ formData, setFormData }) => {
               className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
               placeholder="Cts no / fP/7/12 no"
               type="text"
+              value={formData.ctsNo}
+              onChange={(event) =>
+                setFormData({ ...formData, ctsNo: event.target.value })
+              }
             />
           </div>
           <div className="mt-10 max-md:max-w-full">
@@ -32,6 +40,10 @@ const PorjectDetails = ({ formData, setFormData }) => {
               className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
               placeholder="Enter a number"
               type="text"
+              value={formData.totalMember}
+              onChange={(event) =>
+                setFormData({ ...formData, totalMember: event.target.value })
+              }
             />
           </div>
         </div>
@@ -86,17 +98,32 @@ const PorjectDetails = ({ formData, setFormData }) => {
                     color: "#686677",
                   }),
                 }}
+                value={formData.roomType}
+                onChange={(event) =>
+                  setFormData({ ...formData, roomType: event.target.value })
+                }
               />
 
               <input
                 className="justify-center items-start h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[50%]  bg-transparent ml-[70px]"
                 placeholder="Enter a number"
                 type="text"
+                value={formData.numberOfSociety}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    numberOfSociety: event.target.value,
+                  })
+                }
               />
               <input
                 className="justify-center items-start h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[50%]  bg-transparent ml-[15px]"
                 placeholder="Sq. M."
                 type="text"
+                value={formData.squareM}
+                onChange={(event) =>
+                  setFormData({ ...formData, squareM: event.target.value })
+                }
               />
             </div>
             {/* <div className="flex justify-center text-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer w-[21%] ml-[79%] mt-6">
@@ -150,6 +177,14 @@ const PorjectDetails = ({ formData, setFormData }) => {
                   placeholder="Enter a number"
                   className="w-[50px]"
                   type="radio"
+                  value="Y"
+                  checked={formData.federation === "Y"}
+                  onChange={(event) =>
+                    setFormData({
+                      ...formData,
+                      federation: event.target.value,
+                    })
+                  }
                 />
               </div>
 
@@ -163,6 +198,11 @@ const PorjectDetails = ({ formData, setFormData }) => {
                   placeholder="Enter a number"
                   className="w-[50px]"
                   type="radio"
+                  value="N"
+                  checked={formData.federation === "N"}
+                  onChange={(event) =>
+                    setFormData({ ...formData, federation: event.target.value })
+                  }
                 />
               </div>
             </div>

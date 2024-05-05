@@ -31,6 +31,7 @@ const projectReducer = (state = initialState, action) => {
             project_form_step_2: action.payload,
           };
         case 3:
+          console.log(action.payload);
           return {
             ...state,
             project_form_step_3: action.payload,
@@ -44,6 +45,12 @@ const projectReducer = (state = initialState, action) => {
           return {
             ...state,
             project_form_step_5: action.payload,
+          };
+        case 6:
+          console.log("this is the case 6");
+          return {
+            ...state,
+            project_form_step_6: action.payload,
           };
         default:
           return { ...state };

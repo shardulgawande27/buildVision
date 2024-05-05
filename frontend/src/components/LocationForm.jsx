@@ -1,8 +1,12 @@
 import React, { Component, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useDispatch } from "react-redux";
+import { addProjectSteps } from "../store/project/projectActions";
 
 const LocationForm = () => {
+  const dispatch = useDispatch();
+
   const [locationData, setLocationData] = useState({
     societyName: "",
     streetName: "",
@@ -15,6 +19,11 @@ const LocationForm = () => {
   const state = {
     center: [locationData.latitude, locationData.longitude],
     zoom: 13,
+  };
+
+  const saveLocation = () => {
+    const page = 6;
+    dispatch(addProjectSteps({ formData: locationData, page }));
   };
 
   useEffect(() => {
@@ -133,6 +142,17 @@ const LocationForm = () => {
               }
             />
           </div>
+        </div>
+        <div className="flex justify-center">
+          <button
+            className="justify-center self-end px-5 py-3 mt-24 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 float-right"
+            type="submit"
+            onClick={() => {
+              saveLocation();
+            }}
+          >
+            Save & Next
+          </button>
         </div>
       </div>
     </div>
