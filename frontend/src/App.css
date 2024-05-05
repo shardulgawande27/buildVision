@@ -75,3 +75,17 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.profile-custom {
+    border-radius: 100%;
+}
+
+.leaflet-container {
+  height: 600px;
+  width: 100%;
+}
+
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}

@@ -14,7 +14,6 @@ const Validate = ({ route }) => {
 
   const notify = (massege) => toast(massege);
 
-
   let user_email = sessionStorage.getItem("user_email");
 
   console.log(user_email, "user_email >>>>>>>>>>>>>>>>>>");
@@ -44,9 +43,6 @@ const Validate = ({ route }) => {
 
   const sendData = async () => {
     try {
-
-     
-
       userServices
         .VerifyOtp({
           user_email: user_email,
@@ -61,7 +57,7 @@ const Validate = ({ route }) => {
         .catch((error) => {
           console.log("Error processing data>>>>>>>>>>", error);
 
-          notify(error.response.data.message)
+          notify(error.response.data.message);
         });
     } catch (error) {
       console.log(error, "This is the error for the otp section >>>>>>>>>>>>>");
@@ -71,33 +67,33 @@ const Validate = ({ route }) => {
   return (
     <>
       <ToastContainer />
-    <div className="bg-[#17181F] h-screen flex justify-center items-center">
-      <div className="border border-solid border-slate-50 rounded-lg w-[25%] text-white py-10 m-auto flex flex-col gap-8">
-        <p className="m-auto">OTP is send to your provided email</p>
-        {/* input section */}
-        <div className="opt-input-section flex gap-3 m-auto">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              type="text"
-              value={digit}
-              className="w-10 border-b border-white bg-transparent outline-none text-center text-white"
-              onChange={(e) => handleChange(index, e.target.value)}
-              onKeyDown={(e) => handleKeyDown(index, e)}
-              ref={refs[index]}
-              maxLength={1}
-            />
-          ))}
-        </div>
+      <div className="bg-[#000937] h-screen flex justify-center items-center">
+        <div className="border border-solid border-slate-50 rounded-lg w-[25%] font-semibold text-white py-10 m-auto flex flex-col gap-8">
+          <p className="m-auto">OTP is send to your provided email</p>
+          {/* input section */}
+          <div className="opt-input-section flex gap-3 m-auto">
+            {otp.map((digit, index) => (
+              <input
+                key={index}
+                type="text"
+                value={digit}
+                className="w-10 border-b border-white bg-transparent outline-none text-center text-white"
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+                ref={refs[index]}
+                maxLength={1}
+              />
+            ))}
+          </div>
 
-        <button
-          onClick={()=>sendData()}
-          className="justify-center self-end px-5 py-2  text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 m-auto"
-        >
-          Submit
-        </button>
+          <button
+            onClick={() => sendData()}
+            className="justify-center self-end px-5 py-2  text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 m-auto"
+          >
+            Submit
+          </button>
+        </div>
       </div>
-    </div>
     </>
   );
 };

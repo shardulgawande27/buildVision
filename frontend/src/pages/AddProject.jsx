@@ -4,6 +4,8 @@ import Sidebar from "../components/Sidebar";
 import Form from "../components/Form";
 import AreaForm from "../components/AreaForm";
 import uploadService from "../api/uploadService";
+import Header from "../components/Header";
+import LocationForm from "../components/LocationForm";
 
 const AddProject = () => {
   const [btnActive, setBtnActive] = useState(0);
@@ -14,6 +16,8 @@ const AddProject = () => {
       return <Form />;
     } else if (btnActive === 1) {
       return <AreaForm />;
+    } else if (btnActive === 4) {
+      return <LocationForm />;
     }
   };
 
@@ -35,19 +39,9 @@ const AddProject = () => {
   return (
     <div className="bg-[#17181F] flex">
       <Sidebar />
-      <div className="home-main">
-        {/* search section */}
-        <div className="bg-transparent flex w-[500px] rounded-3xl border-[#4A4B52] border-[1px] items-center px-7 mt-5 ml-5">
-          <input
-            className="flex gap-5  py-2.5 text-sm font-medium  border-[#4A4B52] text-[#4A4B52] max-md:flex-wrap max-md:px-5 bg-transparent w-full outline-none placeholder-[font-thin]::placeholder"
-            type="text"
-            placeholder="Search task, project"
-          />
-
-          <a href="">
-            <img src={searchImg} alt="" />
-          </a>
-        </div>
+      <div className="home-main w-[100%]">
+        {/* search and profile section */}
+        <Header />
 
         {/* name and project details */}
         <div className=" gap-2.5 justify-between items-end px-5 max-md:flex-wrap np-custom">
@@ -100,10 +94,10 @@ const AddProject = () => {
         </div>
 
         {/*  Project detail bar */}
-        <div className="flex justify-between items-center mt-12">
-          <div className="flex gap-2 justify-between items-center px-3 py-2 text-md leading-7 rounded-lg border border-black border-solid bg-stone-950 text-stone-500 max-md:flex-wrap w-[60%] mr-auto ">
+        <div className="flex justify-between pl-2 pr-14 items-center mt-12 w-[100%]">
+          <div className="flex gap-2 justify-between items-center px-3 py-2 text-md  rounded-lg border border-black border-solid bg-stone-950 text-stone-500 w-800px ">
             <div
-              className={`self-stretch my-auto cursor-pointer ${
+              className={`self-stretch my-auto cursor-pointer px-3 ${
                 btnActive == 0
                   ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
                   : ""
@@ -125,7 +119,7 @@ const AddProject = () => {
               <path d="M1 0.5V10.5" stroke="#323232" />
             </svg>
             <div
-              className={`self-stretch my-auto cursor-pointer ${
+              className={`self-stretch my-auto cursor-pointer px-3 ${
                 btnActive == 1
                   ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
                   : ""
@@ -147,7 +141,7 @@ const AddProject = () => {
               <path d="M1 0.5V10.5" stroke="#323232" />
             </svg>
             <div
-              className={`self-stretch my-auto cursor-pointer ${
+              className={`self-stretch my-auto cursor-pointer px-3 ${
                 btnActive == 2
                   ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
                   : ""
@@ -169,7 +163,7 @@ const AddProject = () => {
               <path d="M1 0.5V10.5" stroke="#323232" />
             </svg>
             <div
-              className={`self-stretch my-auto cursor-pointer ${
+              className={`self-stretch my-auto cursor-pointer px-3 ${
                 btnActive == 3
                   ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
                   : ""
@@ -191,7 +185,7 @@ const AddProject = () => {
               <path d="M1 0.5V10.5" stroke="#323232" />
             </svg>
             <div
-              className={`self-stretch my-auto cursor-pointer ${
+              className={`self-stretch my-auto cursor-pointer px-3 ${
                 btnActive == 4
                   ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
                   : ""
@@ -205,10 +199,10 @@ const AddProject = () => {
           </div>
 
           {btnActive == 2 && (
-            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer">
+            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer ml-[10%] ">
               <label
                 htmlFor="upload-input"
-                className="flex items-center cursor-pointer"
+                className="flex items-center cursor-pointer w-[135px]"
               >
                 <svg
                   width="20"
@@ -231,6 +225,45 @@ const AddProject = () => {
                   />
                 </svg>
                 <span>add image(s)</span>
+              </label>
+              <input
+                id="upload-input"
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  uploadFile(e);
+                }}
+              />
+            </div>
+          )}
+          {btnActive == 3 && (
+            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer ml-[10%] ">
+              <label
+                htmlFor="upload-input"
+                className="flex items-center cursor-pointer w-[135px]"
+              >
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.0004 3.83331C10.4607 3.83331 10.8338 4.20641 10.8338 4.66665V16.3333C10.8338 16.7936 10.4607 17.1666 10.0004 17.1666C9.54021 17.1666 9.16711 16.7936 9.16711 16.3333V4.66665C9.16711 4.20641 9.54021 3.83331 10.0004 3.83331Z"
+                    fill="#151515"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.33374 10.5C3.33374 10.0398 3.70684 9.66669 4.16707 9.66669H15.8337C16.294 9.66669 16.6671 10.0398 16.6671 10.5C16.6671 10.9603 16.294 11.3334 15.8337 11.3334H4.16707C3.70684 11.3334 3.33374 10.9603 3.33374 10.5Z"
+                    fill="#151515"
+                  />
+                </svg>
+                <span>Upload file(s)</span>
               </label>
               <input
                 id="upload-input"

@@ -11,7 +11,7 @@ import Loader from "../components/Loader";
 const Signup = () => {
   const nevigateTo = useNavigate();
 
-  const notify = (massege) => toast(massege);
+  const notify = (message) => toast(message);
 
   const [formData, setFormData] = useState({
     role: "",

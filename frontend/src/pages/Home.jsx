@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
-import searchImg from "../assets/images/search.png";
 import projectImage from "../assets/images/project-img1.jpg";
 import plusImg from "../assets/images/plus.png";
 import createAxiosInstance from "../api/api";
 import { Link, useNavigate } from "react-router-dom";
+import profileImg from "./../assets/images/profile-img.png";
+import Header from "../components/Header";
 
 const Home = () => {
   const nevigateTo = useNavigate();
   const [projectData, setProjectData] = useState([]);
 
   useEffect(() => {
-
     if (!localStorage.getItem("token")) {
-      nevigateTo('/')
+      nevigateTo("/");
     }
 
     const fetchData = async () => {
@@ -50,19 +50,8 @@ const Home = () => {
     <div className="bg-[#17181F] flex">
       <Sidebar />
       <div className="home-main">
-        {/* search section */}
-        <div className="bg-transparent flex w-[500px] rounded-3xl border-[#4A4B52] border-[1px] items-center px-7 mt-5 ml-5">
-          <input
-            className="flex gap-5  py-2.5 text-sm font-medium  border-[#4A4B52] text-[#4A4B52] max-md:flex-wrap max-md:px-5 bg-transparent w-full outline-none placeholder-[font-thin]::placeholder"
-            type="text"
-            placeholder="Search task, project"
-          />
-
-          <a href="">
-            <img src={searchImg} alt="" />
-          </a>
-        </div>
-
+        {/* search and profile section */}
+        <Header />
         {/* name and project details */}
         <div className=" gap-2.5 justify-between items-end px-5 max-md:flex-wrap np-custom">
           <div className="flex">

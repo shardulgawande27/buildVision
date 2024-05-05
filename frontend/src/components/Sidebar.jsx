@@ -1,20 +1,15 @@
 import React from "react";
+import logo from "./../assets/images/Logo.png";
 
 const Sidebar = () => {
   return (
     <div className="">
       <div className="flex gap-4 text-xs font-medium text-white h-screen">
         <div className="flex flex-col self-start  px-5 border-r-2 border-zinc-800 h-screen">
-          <div className="flex gap-5 self-center text-lg whitespace-nowrap">
-            <img
-              loading="lazy"
-              srcSet="..."
-              className="shrink-0 aspect-square w-[49px]"
-            />
-            <div className="flex flex-col flex-1 px-5 my-auto">
-              <div>Sachin</div>
-              <div className="mt-2">Potdar</div>
-            </div>
+          {/* logo */}
+          <div className="flex justify-center gap-6 mt-4 items-center">
+            <img src={logo} alt="" />
+            <p className="text-xl">Logo</p>
           </div>
           <div className="flex gap-4 px-5 py-4 mt-12 text-base whitespace-nowrap rounded-xl bg-zinc-800">
             <img

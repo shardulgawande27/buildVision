@@ -9,6 +9,7 @@ import Validate from "../Validate";
 import Task from "../Task";
 import Labour from "../Labour";
 import Loader from "../../components/Loader";
+import LocationForm from "../../components/LocationForm";
 
 const RouteConfig = () => {
   return (
@@ -20,7 +21,6 @@ const RouteConfig = () => {
             localStorage.getItem("token") ? <Navigate to="/home" /> : <Login />
           }
         />
-
         {/* <Route index element={<Login />} /> */}
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/home" exact element={<Home />} />
@@ -29,6 +29,7 @@ const RouteConfig = () => {
         <Route path="/task" exact element={<Task />} />
         <Route path="/labourdetails" exact element={<Labour />} />
         <Route path="/loader" exact element={<Loader />} />
+        <Route path="/location" exact element={<LocationForm />} />
       </Routes>
     </>
   );

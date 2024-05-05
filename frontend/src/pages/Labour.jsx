@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import searchImg from "../assets/images/search.png";
 import Sidebar from "../components/Sidebar";
 import line from "../assets/images/line-1.png";
+import Header from "../components/Header";
 
 const Labour = () => {
   const [selectedDate, setSelectedDate] = useState(7);
@@ -25,18 +26,8 @@ const Labour = () => {
     <div className="bg-[#17181F] flex">
       <Sidebar />
       <div className="home-main">
-        {/* search section */}
-        <div className="bg-transparent flex w-[500px] rounded-3xl border-[#4A4B52] border-[1px] items-center px-7 mt-5 ml-5">
-          <input
-            className="flex gap-5  py-2.5 text-sm font-medium  border-[#4A4B52] text-[#4A4B52] max-md:flex-wrap max-md:px-5 bg-transparent w-full outline-none placeholder-[font-thin]::placeholder"
-            type="text"
-            placeholder="Search task, project"
-          />
-
-          <a href="">
-            <img src={searchImg} alt="" />
-          </a>
-        </div>
+        {/* search and profile section */}
+        <Header />
 
         {/* name and project details */}
         <div className=" gap-2.5 justify-between items-end px-5 max-md:flex-wrap np-custom">

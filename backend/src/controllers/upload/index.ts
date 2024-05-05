@@ -1,4 +1,4 @@
-import express , {IRouter} from "express";
+import express, { IRouter } from "express";
 import authMiddleware from "@/src/middlewares/authMiddleware";
 import multer from "multer";
 import path, { dirname } from "path";
@@ -28,11 +28,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
+router.post("/uploadImage", upload.single("image"), async (req, res) => {
+  let fileObj = req.file;
+  console.log(fileObj); // This will log information about the uploaded file
+  res.send("File uploaded successfully");
+});
 
-router.post('/uploadImage', upload.single('image'), async (req, res) => {
-    let fileObj = req.file;
-    console.log(fileObj); // This will log information about the uploaded file
-    res.send('File uploaded successfully');
-  });
+router.use("/uploads", express.static(uploadDir));
 
 module.exports = router;
