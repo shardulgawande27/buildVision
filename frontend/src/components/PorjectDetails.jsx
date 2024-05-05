@@ -19,17 +19,9 @@ const PorjectDetails = ({ formData, setFormData }) => {
             />
           </div>
           <div className="mt-10 max-md:max-w-full">
-            <div> Location</div>
-            <input
-              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-zinc-500 w-[100%]  bg-transparent"
-              placeholder="Location"
-              type="text"
-            />
-          </div>
-          <div className="mt-10 max-md:max-w-full">
             <div>CTS</div>
             <input
-              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-zinc-500 w-[100%] bg-transparent"
+              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
               placeholder="Cts no / fP/7/12 no"
               type="text"
             />
@@ -37,7 +29,7 @@ const PorjectDetails = ({ formData, setFormData }) => {
           <div className="mt-10 max-md:max-w-full">
             <div>Total Member in the society</div>
             <input
-              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-zinc-500 w-[100%]  bg-transparent"
+              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
               placeholder="Enter a number"
               type="text"
             />
@@ -103,11 +95,11 @@ const PorjectDetails = ({ formData, setFormData }) => {
               />
               <input
                 className="justify-center items-start h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[50%]  bg-transparent ml-[15px]"
-                placeholder="Enter a number"
+                placeholder="Sq. M."
                 type="text"
               />
             </div>
-            <div className="flex justify-center text-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer w-[21%] ml-[79%] mt-6">
+            {/* <div className="flex justify-center text-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer w-[21%] ml-[79%] mt-6">
               <label
                 htmlFor="upload-input"
                 className="flex items-center cursor-pointer w-[135px]"
@@ -143,9 +135,9 @@ const PorjectDetails = ({ formData, setFormData }) => {
                   uploadFile(e);
                 }}
               />
-            </div>
+            </div> */}
           </div>
-          <div className="flex  flex-col flex-nowrap w-[100%]">
+          <div className="flex mt-11 flex-col flex-nowrap w-[100%]">
             <div className="max-md:max-w-full ">fedration</div>
             <div className="flex gap-5">
               <div className="flex items-center gap-5 justify-center  h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[20%]  bg-transparent">
