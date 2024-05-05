@@ -76,3 +76,18 @@ ProjectDetails.jsx
           </button> */}
         </div>
       </div>
+
+
+LocationForm.jsx
+<MapContainer center={state.center} zoom={state.zoom}>
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={state.center}>
+          <Popup>
+            Jondhali Baug Rd, Dhobi Ali, Charai, Thane West, Thane, Maharashtra
+            400601.
+          </Popup>
+        </Marker>
+      </MapContainer>

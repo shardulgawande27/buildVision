@@ -5,6 +5,7 @@ import Form from "../components/Form";
 import AreaForm from "../components/AreaForm";
 import uploadService from "../api/uploadService";
 import Header from "../components/Header";
+import LocationForm from "../components/LocationForm";
 
 const AddProject = () => {
   const [btnActive, setBtnActive] = useState(0);
@@ -15,6 +16,8 @@ const AddProject = () => {
       return <Form />;
     } else if (btnActive === 1) {
       return <AreaForm />;
+    } else if (btnActive === 4) {
+      return <LocationForm />;
     }
   };
 
@@ -91,7 +94,7 @@ const AddProject = () => {
         </div>
 
         {/*  Project detail bar */}
-        <div className="flex justify-between items-center mt-12 w-[100%]">
+        <div className="flex justify-between pl-2 pr-14 items-center mt-12 w-[100%]">
           <div className="flex gap-2 justify-between items-center px-3 py-2 text-md  rounded-lg border border-black border-solid bg-stone-950 text-stone-500 w-800px ">
             <div
               className={`self-stretch my-auto cursor-pointer px-3 ${
@@ -196,7 +199,7 @@ const AddProject = () => {
           </div>
 
           {btnActive == 2 && (
-            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer ml-[70%] ">
+            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer ml-[10%] ">
               <label
                 htmlFor="upload-input"
                 className="flex items-center cursor-pointer w-[135px]"
@@ -235,7 +238,7 @@ const AddProject = () => {
             </div>
           )}
           {btnActive == 3 && (
-            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer ml-[70%] ">
+            <div className="flex justify-center items-center px-2 py-1 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 h-[40px] cursor-pointer ml-[10%] ">
               <label
                 htmlFor="upload-input"
                 className="flex items-center cursor-pointer w-[135px]"

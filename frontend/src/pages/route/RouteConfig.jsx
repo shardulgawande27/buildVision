@@ -21,7 +21,6 @@ const RouteConfig = () => {
             localStorage.getItem("token") ? <Navigate to="/home" /> : <Login />
           }
         />
-
         {/* <Route index element={<Login />} /> */}
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/home" exact element={<Home />} />
