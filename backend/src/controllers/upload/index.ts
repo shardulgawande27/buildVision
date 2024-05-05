@@ -1,15 +1,24 @@
 import express , {IRouter} from "express";
 import authMiddleware from "@/src/middlewares/authMiddleware";
 import multer from "multer";
-import path from "path";
+import path, { dirname } from "path";
 const router: IRouter = express.Router();
 // import { uplaodImage } from "./uploadController";
 
-const uploadDir = path.resolve(__dirname, 'uploads/'); // Absolute path to the uploads directory
+
+const index = __dirname.indexOf('\\backend\\');
+const trimmedPath = index !== -1 ? __dirname.slice(0, index + '\\backend\\'.length - 1) : __dirname;
+
+console.log(trimmedPath, "trim")
+
+
+
+
+const uploadDir = path.resolve(__dirname, 'public/'); // Absolute path to the uploads directory
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir); // Path to save uploaded files
+    cb(null, trimmedPath + '/public'); // Path to save uploaded files
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
