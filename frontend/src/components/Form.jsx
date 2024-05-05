@@ -16,15 +16,13 @@ const Form = () => {
     treasurerName: "",
     treasurerMobile: "",
   });
-  const forms = ["ProjectDetails", "AreaForm", "Photos"];
+  const forms = ["ProjectDetails", "AreaForm"];
 
   const displayPage = () => {
     if (page == 0) {
       return <PorjectDetails formData={formData} setFormData={setFormData} />;
     } else if (page == 1) {
       return <Committe formData={formData} setFormData={setFormData} />;
-    } else {
-      return <Photo formData={formData} setFormData={setFormData} />;
     }
   };
 
