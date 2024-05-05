@@ -13,11 +13,13 @@ const trimmedPath =
 
 console.log(trimmedPath, "trim");
 
-const uploadDir = path.resolve(__dirname, "public/"); // Absolute path to the uploads directory
+console.log(trimmedPath, "trim");
+
+const uploadDir = path.resolve(__dirname, "public/img"); // Absolute path to the uploads directory
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, trimmedPath + "/public"); // Path to save uploaded files
+    cb(null, trimmedPath + "/public/img"); // Path to save uploaded files
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
