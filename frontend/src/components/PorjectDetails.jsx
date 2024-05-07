@@ -108,11 +108,11 @@ const PorjectDetails = ({ formData, setFormData }) => {
                 className="justify-center items-start h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[50%]  bg-transparent ml-[70px]"
                 placeholder="Enter a number"
                 type="text"
-                value={formData.numberOfSociety}
+                value={formData.numberOfRooms}
                 onChange={(event) =>
                   setFormData({
                     ...formData,
-                    numberOfSociety: event.target.value,
+                    numberOfRooms: event.target.value,
                   })
                 }
               />

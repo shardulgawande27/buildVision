@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PorjectDetails from "./PorjectDetails";
 import Committe from "./Committee";
 import Photo from "./Photo";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProjectSteps } from "../store/project/projectActions";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const form = useSelector((state) => state);
+  console.log(form, "This is the form value");
   const [page, setPage] = useState(1);
   const [formData, setFormData] = useState({
     projectName: "",
     ctsNo: "",
     totalMember: "",
     roomType: "",
-    numberOfSociety: "",
+    numberOfRooms: "",
     squareM: "",
     federation: "Y",
     chairmanName: "",
@@ -23,6 +25,12 @@ const Form = () => {
     treasurerName: "",
     treasurerMobile: "",
   });
+
+  useEffect(() => {
+    if (form.project.project_form_step_1) {
+      setFormData(form.project.project_form_step_1);
+    }
+  }, []);
 
   const forms = ["ProjectDetails", "AreaForm"];
 

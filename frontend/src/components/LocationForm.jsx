@@ -1,11 +1,13 @@
 import React, { Component, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProjectSteps } from "../store/project/projectActions";
+import projectServices from "../api/projectServices";
 
 const LocationForm = () => {
   const dispatch = useDispatch();
+  const formDataSelector = useSelector((state) => state);
 
   const [locationData, setLocationData] = useState({
     societyName: "",
@@ -21,9 +23,22 @@ const LocationForm = () => {
     zoom: 13,
   };
 
-  const saveLocation = () => {
+  const saveData = async (formDataSelector) => {
+    try {
+      console.log("This is formDataSelector", formDataSelector);
+      const response = await projectServices.addPrroject(formDataSelector);
+      console.log("response from add project", response);
+    } catch (error) {
+      console.log("Error in full form saving", error);
+    }
+  };
+
+  const saveLocation = async () => {
     const page = 6;
     dispatch(addProjectSteps({ formData: locationData, page }));
+    setTimeout(() => {
+      saveData(formDataSelector);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -151,7 +166,7 @@ const LocationForm = () => {
               saveLocation();
             }}
           >
-            Save & Next
+            Save Information
           </button>
         </div>
       </div>

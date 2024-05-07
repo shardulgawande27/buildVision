@@ -82,15 +82,17 @@ const AreaForm = () => {
           </div>
         </div>
       </div>
-      <button
-        className="justify-center self-end px-5 py-3 mt-24 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 float-right"
-        type="submit"
-        onClick={() => {
-          saveArea();
-        }}
-      >
-        Save & Next
-      </button>
+      <div className="flex justify-center">
+        <button
+          className="justify-center self-end px-5 py-3 mt-24 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10 float-right"
+          type="submit"
+          onClick={() => {
+            saveArea();
+          }}
+        >
+          Save & Next
+        </button>
+      </div>
     </div>
   );
 };
