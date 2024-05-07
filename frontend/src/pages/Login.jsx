@@ -7,10 +7,13 @@ import { TokenService } from "../api/tokenService";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useDispatch} from 'react-redux'
+import { login } from "../store/user/userActions";
 
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const notify = (massege) => toast(massege);
 
   const [email, setEmail] = useState(null)
@@ -45,12 +48,13 @@ const Login = () => {
     }).then((res)=>{
       console.log(res.data, "res >>>>>>>>>>>>>>>>>>>>>>")
       if(res.data.data.status){
-        notify("you are logged in")
+        dispatch(login(res.data.data))
         TokenService.saveToken(res.data.data.token);
         navigate('/home')
       }
     }).catch((err)=>{
-        notify(err.response.data.message)
+      console.log(err)
+        // notify(err.response.data.message)
     })
   }
 

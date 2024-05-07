@@ -7,7 +7,7 @@ import projectServices from "../api/projectServices";
 
 const LocationForm = () => {
   const dispatch = useDispatch();
-  const formDataSelector = useSelector((state) => state);
+  const formDataSelector = useSelector((state) => state.project);
 
   const [locationData, setLocationData] = useState({
     societyName: "",
@@ -23,23 +23,37 @@ const LocationForm = () => {
     zoom: 13,
   };
 
-  const saveData = async (formDataSelector) => {
+
+  const saveData = async () => {
     try {
       console.log("This is formDataSelector", formDataSelector);
-      const response = await projectServices.addPrroject(formDataSelector);
+      const response = await projectServices.addPrroject({
+        ...formDataSelector.project_form_step_1,
+        ...formDataSelector.project_form_step_2,
+        ...formDataSelector.project_form_step_3,
+        ...formDataSelector.project_form_step_4,
+        ...formDataSelector.project_form_step_5,
+        ...locationData,
+
+      });
       console.log("response from add project", response);
     } catch (error) {
       console.log("Error in full form saving", error);
     }
   };
 
+
+
   const saveLocation = async () => {
     const page = 6;
-    dispatch(addProjectSteps({ formData: locationData, page }));
-    setTimeout(() => {
-      saveData(formDataSelector);
-    }, 1000);
+    dispatch(addProjectSteps({ formData: locationData, page }))
+   
+   
+    await saveData()
+   
   };
+
+
 
   useEffect(() => {
     console.log(locationData);
