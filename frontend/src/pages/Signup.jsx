@@ -146,18 +146,15 @@ const Signup = () => {
               <div className="pt-32">
                 <div className="bg-[#4A1FB899] p-4 rounded-md shadow-md">
                   <div className="text-white">
-                    As a freelancer, finding the right gigs can be challenging,
-                    but FreelanceHub made it simple. I love the personalized job
-                    recommendations and the ability to showcase my portfolio
+                    As a developer, finding the right construction project can
+                    be challenging, but Priyojan made it simple.
                   </div>
                   <div className="pt-10">
                     <div className="flex gap-4">
                       <img src="http://" alt="reviiew" />
                       <div className="flex flex-col text-white">
-                        <div className="text-base">Gaurav Singh</div>
-                        <div className="text-xs">
-                          Full Stack Developer incoming
-                        </div>
+                        <div className="text-base">Sachin Gawande</div>
+                        <div className="text-xs">Civil Engineer</div>
                       </div>
                     </div>
                   </div>

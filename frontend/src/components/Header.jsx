@@ -17,7 +17,7 @@ const Header = () => {
     <div className="flex justify-between">
       <div className="bg-transparent flex w-[500px] h-[50px] rounded-3xl border-[#4A4B52] border-[1px] items-center px-7 mt-5 ml-5">
         <input
-          className="flex gap-5  py-2.5 text-sm font-medium  border-[#4A4B52] text-[#4A4B52] max-md:flex-wrap max-md:px-5 bg-transparent w-full outline-none placeholder-[font-thin]::placeholder"
+          className="flex gap-5  py-2.5 text-sm font-medium  border-[#4A4B52] text-white max-md:flex-wrap max-md:px-5 bg-transparent w-full outline-none placeholder-[font-thin]::placeholder"
           type="text"
           placeholder="Search task, project"
         />

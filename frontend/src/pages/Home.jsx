@@ -9,7 +9,7 @@ import profileImg from "./../assets/images/profile-img.png";
 import Header from "../components/Header";
 
 const Home = () => {
-  const nevigateTo = useNavigate();
+  const navigateTo = useNavigate();
   const [projectData, setProjectData] = useState([]);
 
   useEffect(() => {
@@ -147,10 +147,15 @@ const Home = () => {
                     <div className="shrink-0 self-stretch w-1 bg-indigo-500 h-[35px] rounded-sm  ml-[-5px] my-auto"></div>
                   </div>
                 </div>
-                <div className="flex flex-col px-4 py-5 rounded-2xl bg-zinc-800 w-[300px] mt-4">
+                <div
+                  className="flex flex-col px-4 py-5 rounded-2xl bg-zinc-800 w-[300px] mt-4 cursor-pointer"
+                  onClick={() => {
+                    navigateTo(`/project/${element.m_project_id}`);
+                  }}
+                >
                   <div className="flex gap-5 justify-between">
                     <div
-                      className={`shrink-0 ${barColor} rounded-xl h-[23px] w-[86px]`}
+                      className={`shrink-0 bg-indigo-600 rounded-xl h-[23px] w-[86px]`}
                     />
                     <div className="text-lg font-medium text-zinc-300">
                       {month} {date}
@@ -161,7 +166,11 @@ const Home = () => {
                   </div>
                   <img
                     loading="lazy"
-                    src={element.m_project_image_url_1}
+                    src={
+                      element.m_project_image_url_1
+                        ? element.m_project_image_url_1
+                        : projectImage
+                    }
                     className="mt-4 w-full aspect-[1.85] rounded-xl object-cover"
                   />
                 </div>
@@ -280,7 +289,7 @@ const Home = () => {
             <div
               className="flex gap-5 justify-between items-start px-4  mt-4 pt-5 pb-14 rounded-2xl bg-zinc-800 w-[300px] cursor-pointer"
               onClick={() => {
-                nevigateTo("/addproject");
+                navigateTo("/addproject");
               }}
             >
               <div className="flex flex-col w-full">

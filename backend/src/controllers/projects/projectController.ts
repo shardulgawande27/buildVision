@@ -20,6 +20,17 @@ export async function postProject(req: Request, res: Response) {
       m_no_of_rooms: data.numberOfRooms,
       m_sq_meter: data.squareM,
       m_fedration: data.federation,
+      m_chairman_name: data.chairmanName,
+      m_chairman_phone: data.chairmanMobile,
+      m_sec_name: data.secretaryName,
+      m_sec_phone: data.secretaryMobile,
+      m_treasurer_name: data.treasurerName,
+      m_treasurer_phone: data.treasurerMobile,
+      plot_area_pr_card: data.prCardArea,
+      plot_area_tilr: data.tIlrArea,
+      plot_area_ps: data.physicalSurveyArea,
+      m_socity_name: data.societyName,
+      m_project_city: data.cityName,
     };
     console.log("this is formData", formdata);
     knex("m_projects")
@@ -48,6 +59,24 @@ export async function getProjects(req: Request, res: Response) {
       project_data
     );
   } catch (error: any) {
+    sendResponse(res, statusCode.DB_ERROR, error.message, null);
+  }
+}
+
+export async function getThisProject(req: Request, res: Response) {
+  try {
+    const projectId = req.body.id;
+    const project_data = await knex("m_projects")
+      .select("*")
+      .where("m_project_id", projectId);
+    sendResponse(
+      res,
+      statusCode.SUCCESS,
+      "Data fetched successfully",
+      project_data
+    );
+  } catch (error: any) {
+    console.log("This server side error while getting one project", error);
     sendResponse(res, statusCode.DB_ERROR, error.message, null);
   }
 }

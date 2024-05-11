@@ -10,6 +10,8 @@ import Task from "../Task";
 import Labour from "../Labour";
 import Loader from "../../components/Loader";
 import LocationForm from "../../components/LocationForm";
+import Project from "../Project";
+import Landing from "../Landing";
 
 const RouteConfig = () => {
   return (
@@ -30,6 +32,8 @@ const RouteConfig = () => {
         <Route path="/labourdetails" exact element={<Labour />} />
         <Route path="/loader" exact element={<Loader />} />
         <Route path="/location" exact element={<LocationForm />} />
+        <Route path="/project/:id" element={<Project />} />
+        <Route path="/landing" element={<Landing />} />
       </Routes>
     </>
   );

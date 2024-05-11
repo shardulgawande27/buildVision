@@ -2,6 +2,9 @@ import React from "react";
 import searchImg from "../assets/images/search.png";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
+import img1 from "./../assets/images/task1.jpg";
+import img2 from "./../assets/images/task2.jpg";
+import img3 from "./../assets/images/task3.jpg";
 
 const Task = () => {
   return (
@@ -118,15 +121,15 @@ const Task = () => {
               </div>
               <div className="flex gap-1.5 mt-4 text-white whitespace-nowrap">
                 <div className="justify-center px-3.5 py-0.5 bg-purple-700 rounded-[100px]">
-                  Saas
+                  Ground
                 </div>
                 <div className="justify-center px-3.5 py-0.5 bg-sky-500 rounded-[100px]">
-                  Web
+                  Foundation
                 </div>
               </div>
               <img
                 loading="lazy"
-                srcSet="..."
+                src={img1}
                 className="mt-4 w-full aspect-[1.85]"
               />
               <div className="mt-4 text-lg text-white">Improve </div>
@@ -272,15 +275,15 @@ const Task = () => {
               </div>
               <div className="flex gap-1.5 mt-4 text-white whitespace-nowrap">
                 <div className="justify-center px-3.5 py-0.5 bg-purple-700 rounded-[100px]">
-                  Saas
+                  RCC
                 </div>
                 <div className="justify-center px-3.5 py-0.5 bg-sky-500 rounded-[100px]">
-                  Web
+                  Flooring
                 </div>
               </div>
               <img
                 loading="lazy"
-                srcSet="..."
+                src={img3}
                 className="mt-4 w-full aspect-[1.85]"
               />
               <div className="mt-4 text-lg text-white">Improve </div>
@@ -335,15 +338,15 @@ const Task = () => {
               </div>
               <div className="flex gap-1.5 mt-4 text-white whitespace-nowrap">
                 <div className="justify-center px-3.5 py-0.5 bg-purple-700 rounded-[100px]">
-                  Saas
+                  Landfilling
                 </div>
                 <div className="justify-center px-3.5 py-0.5 bg-sky-500 rounded-[100px]">
-                  Web
+                  Concret
                 </div>
               </div>
               <img
                 loading="lazy"
-                srcSet="..."
+                src={img2}
                 className="mt-4 w-full aspect-[1.85]"
               />
               <div className="mt-4 text-lg text-white">Improve </div>
