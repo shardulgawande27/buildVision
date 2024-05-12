@@ -68,7 +68,7 @@ export async function postTask(req: Request, res: Response) {
 }
 
 export async function getTask(req: Request, res: Response) {
-  console.log("this is getTask");
+  // console.log("this is getTask");
   try {
     const tasks = await knex("m_project_tasks").select("*");
     sendResponse(res, statusCode.SUCCESS, "Tasks fetched successfully", tasks);

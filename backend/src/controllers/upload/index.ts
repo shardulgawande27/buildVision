@@ -1,5 +1,5 @@
 import express, { IRouter } from "express";
-import authMiddleware from "@/src/middlewares/authMiddleware";
+import authMiddleware from "@/src/middlewares/authenticationChecker";
 import multer from "multer";
 import path, { dirname } from "path";
 const router: IRouter = express.Router();

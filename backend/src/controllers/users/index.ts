@@ -1,20 +1,11 @@
 import express, { IRouter } from 'express';
-import { register , login, verifyUserWithOtp, resendMailOtp} from "./userController";
-import authMiddleware from "@/src/middlewares/authMiddleware";
+import { getUserDetails } from "./userController";
+import authMiddleware from "@/src/middlewares/authenticationChecker";
 const router: IRouter = express.Router();
 
 
 // register a new user
-router.post("/register", register);
-router.post("/login", login);
-router.post("/verifyUserWithOtp", verifyUserWithOtp);
-router.post("/resendMailOtp", resendMailOtp);
+router.get("/user-details", getUserDetails);
 
-
-// login a user
-// router.post("/login", login);
-
-// get User Profile
-// router.get("/", authMiddleware, getUser);
 
 module.exports = router;

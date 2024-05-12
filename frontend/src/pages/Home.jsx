@@ -7,14 +7,21 @@ import createAxiosInstance from "../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import profileImg from "./../assets/images/profile-img.png";
 import Header from "../components/Header";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const navigateTo = useNavigate();
+
+
+  const user = useSelector((state) => state.user.data.user);
+
   const [projectData, setProjectData] = useState([]);
 
+
+
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      nevigateTo("/");
+    if (!user) {
+      navigateTo("/");
     }
 
     const fetchData = async () => {

@@ -51,7 +51,7 @@ export async function getProjects(req: Request, res: Response) {
 
   try {
     const project_data = await knex("m_projects").select("*");
-    console.log(project_data);
+    // console.log(project_data);
     sendResponse(
       res,
       statusCode.SUCCESS,

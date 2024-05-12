@@ -1,6 +1,7 @@
 import {
     FETCH_USER,
     LOGIN_USER,
+    VERIFY_USER
 } from './userTypes';
 
 //initial state of user
@@ -23,10 +24,20 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_USER:
-           return{
-            ...state,
-            data : action.payload
-           }
+            return {
+                ...state,
+                data: action.payload
+            }
+        case VERIFY_USER:
+            return {
+                ...state,
+                data: action.payload
+            }
+        case FETCH_USER:
+            return {
+                ...state,
+                data: action.payload
+            }
         default:
             return state;
     }

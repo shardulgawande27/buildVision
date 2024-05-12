@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from "react";
 import profileImg from "./../assets/images/profile-img.png";
 import searchImg from "../assets/images/search.png";
+import userServices from "../api/userServices";
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../store/user/userActions";
 
 const Header = () => {
+
+  const dispatch = useDispatch()
+
   const [logout, setLogout] = useState(false);
+
+
+  useEffect(()=>{
+    userServices.GetUserDetails().then((res)=>{
+      dispatch(fetchUser(res.data.data))
+    }).catch((err)=>{
+      console.log(err)
+    })
+
+  }, [])
 
   const changeLogout = () => {
     setLogout(!logout);

@@ -12,15 +12,19 @@ import Loader from "../../components/Loader";
 import LocationForm from "../../components/LocationForm";
 import Project from "../Project";
 import Landing from "../Landing";
+import { useSelector } from "react-redux";
 
 const RouteConfig = () => {
+
+  const user = useSelector((state) => state.user.data.user);
+
   return (
     <>
       <Routes>
         <Route
           path="/"
           element={
-            localStorage.getItem("token") ? <Navigate to="/home" /> : <Login />
+            user ? <Navigate to="/home" /> : <Login />
           }
         />
         {/* <Route index element={<Login />} /> */}
