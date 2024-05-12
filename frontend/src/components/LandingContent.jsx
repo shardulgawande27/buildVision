@@ -3,32 +3,34 @@ import { Typewriter } from "react-simple-typewriter";
 
 const LandingContent = () => {
   return (
-    <div className="py-36 flex flex-col justify-center">
+    <div className="py-24 flex flex-col justify-center">
       <div>
-        <h1 className="text-white text-6xl font-semibold flex justify-center items-center">
-          Best Software Tool For
-        </h1>
-      </div>
-      <div className="py-6 flex justify-center items-center mt-1 text-6xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-        <span>
-          <Typewriter
-            words={[
-              "Finding Projects",
-              "Managing Projects",
-              "Managing Developers",
-              "Managing Workers",
-            ]}
-            loop={50}
-            cursor
-            cursorStyle="|"
-            cursorColor="#ce53b7"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-            //   onLoopDone={handleDone}
-            //   onType={handleType}
-          />
-        </span>
+        <div>
+          <h1 className="text-white text-6xl font-extrabold flex justify-center items-center">
+            Best Software Tool For
+          </h1>
+        </div>
+        <div className="py-6 flex justify-center items-center mt-1 text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+          <span>
+            <Typewriter
+              words={[
+                "Finding Projects",
+                "Managing Projects",
+                "Managing Developers",
+                "Managing Workers",
+              ]}
+              loop={50}
+              cursor
+              cursorStyle="|"
+              cursorColor="#ce53b7"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+              //   onLoopDone={handleDone}
+              //   onType={handleType}
+            />
+          </span>
+        </div>
       </div>
       <div className="mt-4">
         <p className="text-zinc-400 font-light flex justify-center text-lg mb-8">

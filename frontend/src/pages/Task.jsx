@@ -181,12 +181,18 @@ const Task = () => {
               <div className="text-sm leading-5 text-stone-300">
                 Create New Card
               </div>
-              <div className="justify-center items-start px-3.5 py-1.5 mt-4 text-sm italic leading-5 text-gray-400 rounded-lg border border-solid bg-stone-900 border-neutral-700">
-                Card Title
-              </div>
-              <div className="items-start px-3.5 pt-1.5 pb-16 mt-4 text-sm italic leading-5 text-gray-400 rounded-lg border border-solid bg-stone-900 border-neutral-700">
-                About the task
-              </div>
+              {/* Card Title */}
+              <input
+                type="text"
+                placeholder="Card Title"
+                className="justify-center items-start px-3.5 py-1.5 mt-4 text-sm  leading-5 text-white rounded-lg border border-solid bg-stone-900 border-neutral-700 placeholder:text-gray-400 placeholder:italic"
+              />
+              {/* About Task*/}
+              <input
+                type="text"
+                placeholder="About the task"
+                className="justify-center items-start px-3.5 pt-1.5 pb-16 mt-4 text-sm  leading-5 text-white rounded-lg border border-solid bg-stone-900 border-neutral-700 placeholder:text-gray-400 placeholder:italic"
+              />
               <div className="flex flex-col justify-center px-12 py-6 mt-4 w-full rounded-lg border border-solid bg-stone-900 border-neutral-700">
                 <div className="flex gap-0 self-center w-[21px]">
                   <div className="z-10 shrink-0 my-auto bg-white bg-opacity-70 h-[3px]" />
@@ -211,37 +217,68 @@ const Task = () => {
               </div>
               <div className="flex flex-col justify-center items-start px-3.5 py-1.5 mt-4 w-full text-sm leading-5 text-gray-400 rounded-lg border border-solid bg-stone-900 border-neutral-700">
                 <div className="flex gap-1">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/413be2143893e533041c24c6f7118ec1fcada69b59a6dade3ff4d16794b158c3?"
-                    className="shrink-0 self-start w-5 aspect-square"
-                  />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19 4H17V3C17 2.73478 16.8946 2.48043 16.7071 2.29289C16.5196 2.10536 16.2652 2 16 2C15.7348 2 15.4804 2.10536 15.2929 2.29289C15.1054 2.48043 15 2.73478 15 3V4H9V3C9 2.73478 8.89464 2.48043 8.70711 2.29289C8.51957 2.10536 8.26522 2 8 2C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H5C4.20435 4 3.44129 4.31607 2.87868 4.87868C2.31607 5.44129 2 6.20435 2 7V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V7C22 6.20435 21.6839 5.44129 21.1213 4.87868C20.5587 4.31607 19.7956 4 19 4ZM20 19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V12H20V19ZM20 10H4V7C4 6.73478 4.10536 6.48043 4.29289 6.29289C4.48043 6.10536 4.73478 6 5 6H7V7C7 7.26522 7.10536 7.51957 7.29289 7.70711C7.48043 7.89464 7.73478 8 8 8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V6H15V7C15 7.26522 15.1054 7.51957 15.2929 7.70711C15.4804 7.89464 15.7348 8 16 8C16.2652 8 16.5196 7.89464 16.7071 7.70711C16.8946 7.51957 17 7.26522 17 7V6H19C19.2652 6 19.5196 6.10536 19.7071 6.29289C19.8946 6.48043 20 6.73478 20 7V10Z"
+                      fill="#D0D0D0"
+                    />
+                  </svg>
+
                   <div className="italic">Start Date:</div>
                 </div>
               </div>
               <div className="flex flex-col justify-center items-start px-3.5 py-1.5 mt-4 w-full text-sm leading-5 text-gray-400 rounded-lg border border-solid bg-stone-900 border-neutral-700">
                 <div className="flex gap-1">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/1d53bdd333ca06c2dd309115dec4d94e6b8c90d6a5afca98856bf89c0df6776b?"
-                    className="shrink-0 self-start w-5 aspect-square"
-                  />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19 4H17V3C17 2.73478 16.8946 2.48043 16.7071 2.29289C16.5196 2.10536 16.2652 2 16 2C15.7348 2 15.4804 2.10536 15.2929 2.29289C15.1054 2.48043 15 2.73478 15 3V4H9V3C9 2.73478 8.89464 2.48043 8.70711 2.29289C8.51957 2.10536 8.26522 2 8 2C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H5C4.20435 4 3.44129 4.31607 2.87868 4.87868C2.31607 5.44129 2 6.20435 2 7V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V7C22 6.20435 21.6839 5.44129 21.1213 4.87868C20.5587 4.31607 19.7956 4 19 4ZM20 19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V12H20V19ZM20 10H4V7C4 6.73478 4.10536 6.48043 4.29289 6.29289C4.48043 6.10536 4.73478 6 5 6H7V7C7 7.26522 7.10536 7.51957 7.29289 7.70711C7.48043 7.89464 7.73478 8 8 8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V6H15V7C15 7.26522 15.1054 7.51957 15.2929 7.70711C15.4804 7.89464 15.7348 8 16 8C16.2652 8 16.5196 7.89464 16.7071 7.70711C16.8946 7.51957 17 7.26522 17 7V6H19C19.2652 6 19.5196 6.10536 19.7071 6.29289C19.8946 6.48043 20 6.73478 20 7V10Z"
+                      fill="#D0D0D0"
+                    />
+                  </svg>
+
                   <div className="italic">End Date</div>
                 </div>
               </div>
               <div className="flex flex-col justify-center items-start px-3.5 py-1.5 mt-4 w-full text-sm leading-5 text-gray-400 rounded-lg border border-solid bg-stone-900 border-neutral-700">
                 <div className="flex gap-1">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/1d53bdd333ca06c2dd309115dec4d94e6b8c90d6a5afca98856bf89c0df6776b?"
-                    className="shrink-0 self-start w-5 aspect-square"
-                  />
+                  <svg
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3.72039 13.387C4.50179 12.6056 5.5616 12.1667 6.66667 12.1667H13.3333C14.4384 12.1667 15.4982 12.6056 16.2796 13.387C17.061 14.1684 17.5 15.2283 17.5 16.3333V18C17.5 18.4602 17.1269 18.8333 16.6667 18.8333C16.2064 18.8333 15.8333 18.4602 15.8333 18V16.3333C15.8333 15.6703 15.5699 15.0344 15.1011 14.5656C14.6323 14.0967 13.9964 13.8333 13.3333 13.8333H6.66667C6.00363 13.8333 5.36774 14.0967 4.8989 14.5656C4.43006 15.0344 4.16667 15.6703 4.16667 16.3333V18C4.16667 18.4602 3.79357 18.8333 3.33333 18.8333C2.8731 18.8333 2.5 18.4602 2.5 18V16.3333C2.5 15.2283 2.93899 14.1684 3.72039 13.387Z"
+                      fill="#D0D0D0"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10 3.83332C8.6193 3.83332 7.50001 4.95261 7.50001 6.33332C7.50001 7.71404 8.6193 8.83332 10 8.83332C11.3807 8.83332 12.5 7.71404 12.5 6.33332C12.5 4.95261 11.3807 3.83332 10 3.83332ZM5.83334 6.33332C5.83334 4.03214 7.69882 2.16666 10 2.16666C12.3012 2.16666 14.1667 4.03214 14.1667 6.33332C14.1667 8.63451 12.3012 10.5 10 10.5C7.69882 10.5 5.83334 8.63451 5.83334 6.33332Z"
+                      fill="#D0D0D0"
+                    />
+                  </svg>
                   <div className="italic">Assigned to:</div>
                 </div>
               </div>
-              <div className="justify-center text-center cursor-pointer items-center px-5 py-2.5 mt-4 text-sm leading-5 text-white whitespace-nowrap rounded border border-purple-800 border-solid bg-[linear-gradient(180deg,#8724D3_0%,#7821BA_100%)]">
+              <button className="justify-center text-center cursor-pointer items-center px-5 py-2.5 mt-4 text-sm leading-5 text-white whitespace-nowrap rounded border border-purple-800 border-solid bg-[linear-gradient(180deg,#8724D3_0%,#7821BA_100%)]">
                 Save
-              </div>
+              </button>
             </div>
           </div>
           <div className="flex flex-col p-2.5 rounded-xl bg-neutral-900 w-[325px]">
