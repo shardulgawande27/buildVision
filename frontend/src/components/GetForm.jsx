@@ -4,9 +4,11 @@ import Committe from "./Committee";
 import Photo from "./Photo";
 import { useDispatch, useSelector } from "react-redux";
 import { addProjectSteps } from "../store/project/projectActions";
+import GetProjectDetails from "./GetProjectDetails";
+import GetCommittee from "./GetCommittee";
 
-const GetForm = () => {
-  const dispatch = useDispatch();
+const GetForm = ({ project }) => {
+  // const dispatch = useDispatch();
   const form = useSelector((state) => state);
   console.log(form, "This is the form value");
   const [page, setPage] = useState(1);
@@ -27,28 +29,49 @@ const GetForm = () => {
   });
 
   useEffect(() => {
-    if (form.project.project_form_step_1) {
-      setFormData(form.project.project_form_step_1);
+    if (project) {
+      setFormData({
+        projectName: project.m_project_name,
+        ctsNo: project.m_cts_number,
+        totalMember: project.m_total_members,
+        roomType: project.m_room_type,
+        numberOfRooms: project.m_no_of_rooms,
+        squareM: project.m_sq_meter,
+        federation: project.m_fedration,
+        chairmanName: project.m_chairman_name,
+        chairmanMobile: project.m_chairman_phone,
+        secretaryName: project.m_sec_name,
+        secretaryMobile: project.m_sec_phone,
+        treasurerName: project.m_treasurer_name,
+        treasurerMobile: project.m_treasurer_phone,
+      });
+
+      console.log(project.m_project_name, "this is project info");
     }
-  }, []);
+  }, [project]);
+
+  console.log(project, "this is project data in the form");
+  console.log(formData, "This formData filled");
+
+  // useEffect(() => {
+  //   if (form.project.project_form_step_1) {
+  //     setFormData(form.project.project_form_step_1);
+  //   }
+  // }, []);
 
   const forms = ["ProjectDetails", "AreaForm"];
 
   const saveStep1 = () => {
     setPage((currPage) => currPage + 1);
-
-    dispatch(addProjectSteps({ formData, page }));
-    console.log(
-      formData,
-      "This is the formData value after submit>>>>>>>>>>>>>>>>>>>>"
-    );
   };
 
   const displayPage = () => {
     if (page == 1) {
-      return <PorjectDetails formData={formData} setFormData={setFormData} />;
+      return (
+        <GetProjectDetails formData={formData} setFormData={setFormData} />
+      );
     } else if (page == 2) {
-      return <Committe formData={formData} setFormData={setFormData} />;
+      return <GetCommittee formData={formData} setFormData={setFormData} />;
     }
   };
 

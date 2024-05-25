@@ -69,6 +69,11 @@ export async function getThisProject(req: Request, res: Response) {
     const project_data = await knex("m_projects")
       .select("*")
       .where("m_project_id", projectId);
+
+    console.log(
+      project_data,
+      "This is the projectData>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    );
     sendResponse(
       res,
       statusCode.SUCCESS,

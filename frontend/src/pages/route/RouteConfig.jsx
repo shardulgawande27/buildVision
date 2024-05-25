@@ -13,20 +13,15 @@ import LocationForm from "../../components/LocationForm";
 import Project from "../Project";
 import Landing from "../Landing";
 import { useSelector } from "react-redux";
+import Files from "../Files";
 
 const RouteConfig = () => {
-
   const user = useSelector((state) => state.user.data.user);
 
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            user ? <Navigate to="/home" /> : <Login />
-          }
-        />
+        <Route path="/" element={user ? <Navigate to="/home" /> : <Login />} />
         {/* <Route index element={<Login />} /> */}
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/home" exact element={<Home />} />
@@ -38,6 +33,7 @@ const RouteConfig = () => {
         <Route path="/location" exact element={<LocationForm />} />
         <Route path="/project/:id" element={<Project />} />
         <Route path="/landing" element={<Landing />} />
+        <Route path="/files" element={<Files />} />
       </Routes>
     </>
   );

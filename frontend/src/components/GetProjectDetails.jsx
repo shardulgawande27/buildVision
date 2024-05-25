@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import Select from "react-select";
 
 const GetProjectDetails = ({ formData, setFormData }) => {
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   return (
     <div className="flex gap-5 max-md:flex-col max-md:gap-0 mt-4">
@@ -12,7 +12,7 @@ const GetProjectDetails = ({ formData, setFormData }) => {
         <div className="flex flex-col grow px-5 mt-2 text-base font-medium leading-6 text-slate-50 max-md:mt-10 max-md:max-w-full">
           <div className="max-md:max-w-full">
             <div>Project Name</div>
-            <input
+            {/* <input
               className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
               placeholder=" Enter the name of the project"
               type="text"
@@ -20,31 +20,16 @@ const GetProjectDetails = ({ formData, setFormData }) => {
               onChange={(event) =>
                 setFormData({ ...formData, projectName: event.target.value })
               }
-            />
+            /> */}
+            <p className="mt-4 text-xl">{formData.projectName}</p>
           </div>
           <div className="mt-10 max-md:max-w-full">
             <div>CTS</div>
-            <input
-              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
-              placeholder="Cts no / fP/7/12 no"
-              type="text"
-              value={formData.ctsNo}
-              onChange={(event) =>
-                setFormData({ ...formData, ctsNo: event.target.value })
-              }
-            />
+            <p className="mt-4 text-xl">{formData.ctsNo}</p>
           </div>
           <div className="mt-10 max-md:max-w-full">
             <div>Total Member in the society</div>
-            <input
-              className="justify-center items-start p-5 mt-3 rounded-md border border-solid border-slate-50 text-white w-[100%]  bg-transparent placeholder:text-zinc-500"
-              placeholder="Enter a number"
-              type="text"
-              value={formData.totalMember}
-              onChange={(event) =>
-                setFormData({ ...formData, totalMember: event.target.value })
-              }
-            />
+            <p className="mt-4 text-xl">{formData.totalMember}</p>
           </div>
         </div>
         <div className="flex flex-col grow px-5 mt-2 text-base font-medium leading-6 text-slate-50 max-md:mt-10 max-md:max-w-full">
@@ -166,46 +151,9 @@ const GetProjectDetails = ({ formData, setFormData }) => {
           </div>
           <div className="flex mt-11 flex-col flex-nowrap w-[100%]">
             <div className="max-md:max-w-full ">fedration</div>
-            <div className="flex gap-5">
-              <div className="flex items-center gap-5 justify-center  h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[20%]  bg-transparent">
-                <label htmlFor="PD-yes" className="text-white">
-                  yes
-                </label>
-                <input
-                  id="PD-yes"
-                  name="PD-option"
-                  placeholder="Enter a number"
-                  className="w-[50px]"
-                  type="radio"
-                  value="Y"
-                  checked={formData.federation === "Y"}
-                  onChange={(event) =>
-                    setFormData({
-                      ...formData,
-                      federation: event.target.value,
-                    })
-                  }
-                />
-              </div>
-
-              <div className="flex items-center gap-5 justify-center  h-[65px] px-5 mt-2.5 rounded-md border border-solid border-slate-50 text-zinc-500 w-[20%]  bg-transparent">
-                <label htmlFor="PD-no" className="text-white">
-                  No
-                </label>
-                <input
-                  id="PD-no"
-                  name="PD-option"
-                  placeholder="Enter a number"
-                  className="w-[50px]"
-                  type="radio"
-                  value="N"
-                  checked={formData.federation === "N"}
-                  onChange={(event) =>
-                    setFormData({ ...formData, federation: event.target.value })
-                  }
-                />
-              </div>
-            </div>
+            <p className="mt-4 text-xl">
+              {formData.federation === "Y" ? "YES" : "NO"}
+            </p>
           </div>
         </div>
       </div>

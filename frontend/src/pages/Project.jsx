@@ -9,17 +9,19 @@ import LocationForm from "../components/LocationForm";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import GetForm from "../components/GetForm";
+import GetArea from "../components/GetArea";
 
 const Project = () => {
   const [btnActive, setBtnActive] = useState(0);
   const [formComponent, setFormCompoenent] = useState(0);
   const projectID = useParams();
+  const [project, setProject] = useState();
 
   const displayComponent = () => {
     if (btnActive === 0) {
-      return <GetForm />;
+      return <GetForm project={project} />;
     } else if (btnActive === 1) {
-      return <AreaForm />;
+      return <GetArea project={project} />;
     } else if (btnActive === 4) {
       return <LocationForm />;
     }
@@ -32,8 +34,9 @@ const Project = () => {
         "http://localhost:5000/api/project/thisproject",
         projectID
       );
-      console.log(response.data.data[0]);
-      const project = response.data;
+      const project = response.data.data[0];
+      setProject(project);
+      console.log(project, "This is project data");
     } catch (error) {
       console.log("this is error", error);
     }
