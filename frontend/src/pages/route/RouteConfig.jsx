@@ -19,7 +19,7 @@ const RouteConfig = () => {
   const user = useSelector((state) => state.user.data.user);
 
   return (
-    <>
+    <div className="app">
       <Routes>
         <Route path="/" element={user ? <Navigate to="/home" /> : <Login />} />
         {/* <Route index element={<Login />} /> */}
@@ -35,7 +35,7 @@ const RouteConfig = () => {
         <Route path="/landing" element={<Landing />} />
         <Route path="/files" element={<Files />} />
       </Routes>
-    </>
+    </div>
   );
 };
 

@@ -39,7 +39,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[15%]">
+    <div className="sticky top-0 left-0  w-[15%] h-screen">
       <div className="flex gap-4 text-xs font-medium text-white h-screen">
         <div className="flex flex-col self-start  px-5 border-r-2 border-zinc-800 h-screen w-[100%]">
           {/* logo */}
