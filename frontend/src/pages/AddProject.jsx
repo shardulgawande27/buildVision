@@ -6,6 +6,7 @@ import AreaForm from "../components/AreaForm";
 import uploadService from "../api/uploadService";
 import Header from "../components/Header";
 import LocationForm from "../components/LocationForm";
+import UploadTender from "../components/UploadTender";
 
 const AddProject = () => {
   const [btnActive, setBtnActive] = useState(0);
@@ -18,6 +19,8 @@ const AddProject = () => {
       return <AreaForm />;
     } else if (btnActive === 4) {
       return <LocationForm />;
+    } else if (btnActive === 5) {
+      return <UploadTender />;
     }
   };
 
@@ -195,6 +198,72 @@ const AddProject = () => {
               }}
             >
               Location
+            </div>
+            <svg
+              width="2"
+              height="11"
+              viewBox="0 0 2 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: "block" }}
+            >
+              <path d="M1 0.5V10.5" stroke="#323232" />
+            </svg>
+            <div
+              className={`self-stretch my-auto cursor-pointer px-3 ${
+                btnActive == 5
+                  ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
+                  : ""
+              }`}
+              onClick={() => {
+                setBtnActive(5);
+              }}
+            >
+              Tender
+            </div>
+            <svg
+              width="2"
+              height="11"
+              viewBox="0 0 2 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: "block" }}
+            >
+              <path d="M1 0.5V10.5" stroke="#323232" />
+            </svg>
+            <div
+              className={`self-stretch my-auto cursor-pointer px-3 ${
+                btnActive == 6
+                  ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
+                  : ""
+              }`}
+              onClick={() => {
+                setBtnActive(6);
+              }}
+            >
+              Visibiity
+            </div>
+            <svg
+              width="2"
+              height="11"
+              viewBox="0 0 2 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: "block" }}
+            >
+              <path d="M1 0.5V10.5" stroke="#323232" />
+            </svg>
+            <div
+              className={`self-stretch my-auto cursor-pointer px-3 ${
+                btnActive == 7
+                  ? "justify-center px-2.5 py-1 font-medium rounded-lg bg-zinc-900 text-stone-300"
+                  : ""
+              }`}
+              onClick={() => {
+                setBtnActive(7);
+              }}
+            >
+              Alocate
             </div>
           </div>
 

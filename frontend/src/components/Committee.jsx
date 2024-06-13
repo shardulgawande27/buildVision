@@ -2,8 +2,8 @@ import React from "react";
 
 const Committee = ({ formData, setFormData }) => {
   return (
-    <div className="flex gap-5 max-md:flex-col max-md:gap-0 ml-3">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 w-[100%] max-md:ml-0 max-md:w-full">
+    <div className="flex  max-md:flex-col max-md:gap-0 ml-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-[100%] max-md:ml-0 max-md:w-full">
         <div className="flex flex-col mt-10 max-md:mt-10 max-md:max-w-full">
           <div className="max-md:max-w-full">Chairman Name</div>
           <input
@@ -16,7 +16,7 @@ const Committee = ({ formData, setFormData }) => {
             }
           />
         </div>
-        <div className="flex flex-col mt-10 max-md:max-w-full">
+        <div className="flex flex-col mt-10 max-md:max-w-[75%]">
           <div> Chairman mobile number</div>
           <input
             className="p-5 mt-3 rounded-md border border-solid border-slate-50 text-white max-md:max-w-full bg-transparent placeholder:text-zinc-500"

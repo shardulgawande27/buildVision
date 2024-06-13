@@ -39,7 +39,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sticky top-0 left-0  w-[15%] h-screen">
+    <div className="sticky top-0 left-0    w-[15%] h-screen">
       <div className="flex gap-4 text-xs font-medium text-white h-screen">
         <div className="flex flex-col self-start  px-5 border-r-2 border-zinc-800 h-screen w-[100%]">
           {/* logo */}
@@ -113,7 +113,11 @@ const Sidebar = () => {
 
               <div className="text-white">
                 <IconContext.Provider
-                  value={{ className: "text-3xl text-[#828388]" }}
+                  value={{
+                    className: `text-3xl  ${
+                      btnActive === 1 ? "text-white" : "text-[#828388]"
+                    }  }`,
+                  }}
                 >
                   <MdDashboard />
                 </IconContext.Provider>
@@ -132,7 +136,11 @@ const Sidebar = () => {
               {/* <FontAwesomeIcon icon="fa-solid fa-folder" /> */}
               <div className="text-white">
                 <IconContext.Provider
-                  value={{ className: "text-3xl text-[#828388]" }}
+                  value={{
+                    className: `text-3xl  ${
+                      btnActive === 2 ? "text-white" : "text-[#828388]"
+                    }  }`,
+                  }}
                 >
                   <FaFolder />
                 </IconContext.Provider>
@@ -150,7 +158,11 @@ const Sidebar = () => {
             >
               <div className="text-white">
                 <IconContext.Provider
-                  value={{ className: "text-3xl text-[#828388]" }}
+                  value={{
+                    className: `text-3xl  ${
+                      btnActive === 3 ? "text-white" : "text-[#828388]"
+                    }  }`,
+                  }}
                 >
                   <RiProgress5Fill />
                 </IconContext.Provider>
@@ -168,7 +180,11 @@ const Sidebar = () => {
             >
               <div className="text-white">
                 <IconContext.Provider
-                  value={{ className: "text-3xl text-[#828388]" }}
+                  value={{
+                    className: `text-3xl  ${
+                      btnActive === 4 ? "text-white" : "text-[#828388]"
+                    }  }`,
+                  }}
                 >
                   <FaPeopleGroup />
                 </IconContext.Provider>

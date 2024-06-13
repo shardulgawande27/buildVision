@@ -95,11 +95,11 @@ const GetForm = ({ project }) => {
       </div>
 
       {displayPage()}
-      <div className="flex justify-between px-5">
+      <div className="flex justify-between px-10 mb-24">
         <button
           disabled={page == 1}
           onClick={() => setPage((currPage) => currPage - 1)}
-          className="justify-center self-end px-5 py-3 mt-24 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10"
+          className="justify-center self-end px-5 py-3 mt-14 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10"
         >
           Previous
         </button>
@@ -108,7 +108,7 @@ const GetForm = ({ project }) => {
           onClick={() => {
             saveStep1();
           }}
-          className="justify-center self-end px-5 py-3 mt-24 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10"
+          className="justify-center self-end px-5 py-3 mt-14 text-md leading-7 bg-white rounded-lg border border-solid border-zinc-800 text-neutral-900 max-md:px-5 max-md:mt-10"
         >
           Save & Next
         </button>
