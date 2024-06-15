@@ -14,6 +14,7 @@ import Project from "../Project";
 import Landing from "../Landing";
 import { useSelector } from "react-redux";
 import Files from "../Files";
+import AllMembers from "../AllMembers";
 
 const RouteConfig = () => {
   const user = useSelector((state) => state.user.data.user);
@@ -29,6 +30,7 @@ const RouteConfig = () => {
         <Route path="/addproject" exact element={<AddProject />} />
         <Route path="/task" exact element={<Task />} />
         <Route path="/labourdetails" exact element={<Labour />} />
+        <Route path="/allmembers" exact element={<AllMembers />} />
         <Route path="/loader" exact element={<Loader />} />
         <Route path="/location" exact element={<LocationForm />} />
         <Route path="/project/:id" element={<Project />} />
